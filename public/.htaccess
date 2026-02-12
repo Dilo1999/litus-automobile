@@ -1,0 +1,32 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes +FollowSymLinks
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Serve storage files (fallback when symlink doesn't work on Windows)
+    RewriteCond %{REQUEST_URI} ^/storage/(.*)$
+    RewriteCond %{DOCUMENT_ROOT}/../storage/app/public/%1 -f
+    RewriteRule ^storage/(.*)$ ../storage/app/public/$1 [L]
+
+    # Missing hero image (e.g. after DB reset): serve default so no 404
+    RewriteCond %{REQUEST_URI} ^/storage/hero/
+    RewriteCond %{REQUEST_URI} ^/storage/hero/(.*)$
+    RewriteCond %{DOCUMENT_ROOT}/../storage/app/public/hero/%1 !-f
+    RewriteRule ^storage/hero/.* /images/product/HONDA-AIR-BLADE-125-PREMIUM-VERSION-2025-SILVER-RED-BLACK-300x300.webp [L]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
