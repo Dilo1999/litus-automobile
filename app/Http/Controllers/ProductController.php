@@ -115,7 +115,7 @@ class ProductController extends Controller
         // Brands from brands table for hero strip
         $brandList = $brandRecords;
 
-        return view('home', compact(
+        return view('pages.home', compact(
             'products',
             'featuredProduct',
             'promotionProducts',
@@ -186,7 +186,7 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        return view('product', compact('product'));
+        return view('pages.product', compact('product'));
     }
 
     /**

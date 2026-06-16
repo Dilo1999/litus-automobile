@@ -21,7 +21,7 @@
     </div>
     @endif
 
-    <x-product-quote-popup
+    <x-quote.product-popup
         :modal-id="$modalId"
         :close-button-id="$closeButtonId"
         :product-name="$productName"

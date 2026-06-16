@@ -1,4 +1,4 @@
-<x-layout :title="$product->name ?? $product->title">
+<x-layouts.app :title="$product->name ?? $product->title">
     @php
         $accent = '#c19b46';
         $accentHover = '#a8843a';
@@ -88,7 +88,7 @@
         @endif
 
         {{-- Content (scroll target when opening from catalog) --}}
-        <x-product-details
+        <x-product.details
             :product="$product"
             :product-name="$productName"
             :image-url="$imageUrl"
@@ -234,5 +234,5 @@
             }
         }
     </style>
-</x-layout>
+</x-layouts.app>
 

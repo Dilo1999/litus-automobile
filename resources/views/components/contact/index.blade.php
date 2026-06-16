@@ -3,9 +3,9 @@
     $accentHover = '#a8843a';
 @endphp
 
-<x-layout title="Contact Us - Al Zaha General Trading">
+<x-layouts.app title="Contact Us - Al Zaha General Trading">
     <div class="min-h-screen" style="background-color: #F4F4F4;">
-        <x-hero
+        <x-shared.hero
             tagline="Al Zaha"
             title="Contact Us"
             subtitle="Reach out to our team for inquiries, partnerships, or support. We're here to help your business grow."
@@ -173,4 +173,4 @@
         }
         .contact-link-hover:hover { color: #c19b46; }
     </style>
-</x-layout>
+</x-layouts.app>

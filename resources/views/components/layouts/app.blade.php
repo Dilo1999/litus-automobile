@@ -188,7 +188,7 @@
     </style>
 </head>
 <body class="antialiased" style="background-color: #F4F4F4;">
-    <x-navigation />
+    <x-shared.navigation />
 
     @php
         $formSuccessMessage = session('quote_success') ?? session('success');
@@ -308,12 +308,12 @@
     </main>
 
     @unless(request()->routeIs('home'))
-        <x-logo-marquee />
+        <x-shared.logo-marquee />
     @endunless
 
-    <x-footer />
+    <x-shared.footer />
 
-    <x-quote-modal :external-trigger="true" />
+    <x-quote.modal :external-trigger="true" />
 
     @if ($errors->hasAny(['name', 'email', 'contact_number', 'country', 'product', 'message']))
         <script>

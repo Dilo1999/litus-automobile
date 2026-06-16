@@ -1,6 +1,6 @@
-<x-layout title="About Us - LITUS Automobiles">
+<x-layouts.app title="About Us - LITUS Automobiles">
     <div class="min-h-screen bg-white">
-        <x-page-hero
+        <x-shared.page-hero
             title="About LITUS Automobiles"
             subtitle="A leading automotive company in the Maldives, specializing in the sale and service of high-quality motorcycles."
             background-image="images/background/dubai-1-1536x1024.webp"
@@ -332,4 +332,4 @@
             padding: 0.5rem 1.25rem;
         }
     </style>
-</x-layout>
+</x-layouts.app>

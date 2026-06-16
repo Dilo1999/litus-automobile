@@ -1,4 +1,4 @@
-<x-home
+<x-home.index
     :products="$products"
     :featuredProduct="$featuredProduct ?? null"
     :promotionProducts="$promotionProducts ?? collect()"

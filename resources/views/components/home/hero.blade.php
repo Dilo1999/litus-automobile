@@ -37,7 +37,7 @@
             </p>
             <div class="flex flex-wrap gap-3">
                 <a href="#promotions" class="litus-btn litus-btn--red">View Offers</a>
-                <a href="#products" class="litus-btn" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4);">Browse Models</a>
+                <a href="{{ route('motorcycles') }}" class="litus-btn" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4);">Browse Models</a>
             </div>
         </div>
     </div>

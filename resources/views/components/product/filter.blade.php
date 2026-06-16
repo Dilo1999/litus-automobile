@@ -97,7 +97,7 @@
                         </div>
                         <div class="product-filter-list space-y-0.5 max-h-80 overflow-y-auto pr-1 product-filter-scrollbar rounded-xl border border-white/40 bg-white/45 p-1.5 shadow-inner backdrop-blur-md">
                             @if(!empty($categoryTree))
-                                @include('components.partials.category-tree-filter', [
+                                @include('components.product.partials.category-tree-filter', [
                                     'nodes' => $categoryTree,
                                     'depth' => 0,
                                     'selectedCategories' => $selectedCategories,

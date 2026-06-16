@@ -799,7 +799,7 @@
     </div>
 </section>
 
-<x-product-quote-modal
+<x-quote.product-modal
     :product-name="$productName"
     open-button-id="open-quote-modal-product"
     modal-id="quote-modal-product"

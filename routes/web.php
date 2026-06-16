@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Http\Controllers\MotorcycleController;
+use App\Http\Controllers\OwnershipPlanController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\QuoteController;
@@ -58,10 +60,14 @@ Route::get('/login', function () {
 
 Route::get('/', [ProductController::class, 'index'])->name('home');
 
+Route::get('/motorcycles', [MotorcycleController::class, 'index'])->name('motorcycles');
+
+Route::get('/ownership-plans', [OwnershipPlanController::class, 'index'])->name('ownership-plans');
+
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 Route::get('/about', function () {
-    return view('about');
+    return view('pages.about');
 })->name('about');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');

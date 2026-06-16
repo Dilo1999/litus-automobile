@@ -1,0 +1,1 @@
+<x-ownership-plans.index />

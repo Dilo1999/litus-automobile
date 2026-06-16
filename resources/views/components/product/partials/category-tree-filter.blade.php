@@ -51,7 +51,7 @@
                 data-subcategories-for="{{ $toggleKey }}"
                 style="border-color: rgba(193,155,70,0.25);"
             >
-                @include('components.partials.category-tree-filter', [
+                @include('components.product.partials.category-tree-filter', [
                     'nodes' => $children,
                     'depth' => $depth + 1,
                     'selectedCategories' => $selectedCategories,

@@ -19,24 +19,24 @@
     $red = '#C41E3A';
 @endphp
 
-<x-layout title="Al Zaha General Trading">
+<x-layouts.app title="Al Zaha General Trading">
     <div class="min-h-screen">
-        <x-home-hero :featured-product="$featuredProduct" />
+        <x-home.hero :featured-product="$featuredProduct" />
 
-        <x-home-promotions :products="$promotionProducts" />
+        <x-home.promotions :products="$promotionProducts" />
 
-        <x-home-top-selling :products="$topSellingProducts" />
+        <x-home.top-selling :products="$topSellingProducts" />
 
-        <x-home-whats-new />
+        <x-home.whats-new />
 
-        <x-home-offerings />
+        <x-home.offerings />
 
-        <x-home-who-we-are />
+        <x-home.who-we-are />
 
-        <x-home-gallery />
+        <x-home.gallery />
 
         @if(count($brandList) > 0)
-            <x-brand-strip :brands="$brandList" accent="{{ $navy }}" />
+            <x-shared.brand-strip :brands="$brandList" accent="{{ $navy }}" />
         @endif
 
         {{-- Product Catalog --}}
@@ -48,7 +48,7 @@
                 </div>
 
                 <form method="GET" action="{{ route('home') }}#products" id="home-filters-form">
-                    <x-product-filter
+                    <x-product.filter
                         :categories="$categories"
                         :category-tree="$categoryTree"
                         :brands="$brands"
@@ -64,7 +64,7 @@
                     @if(isset($products) && $products->count() > 0)
                         <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 lg:gap-6 xl:gap-7 mt-6">
                             @foreach($products as $product)
-                                <x-product-card :product="$product" />
+                                <x-product.card :product="$product" />
                             @endforeach
                         </div>
 
@@ -134,7 +134,7 @@
     <a href="{{ route('contact') }}" class="floating-chat" aria-label="Contact us">
         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
     </a>
-</x-layout>
+</x-layouts.app>
 
 <style>
     .floating-chat {
