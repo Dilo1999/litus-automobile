@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MotorcycleController;
 use App\Http\Controllers\OwnershipPlanController;
 use App\Http\Controllers\PartsController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ServiceCenterController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\QuoteController;
 
@@ -67,6 +69,11 @@ Route::get('/ownership-plans', [OwnershipPlanController::class, 'index'])->name(
 
 Route::get('/parts', [PartsController::class, 'index'])->name('parts');
 Route::post('/parts', [PartsController::class, 'store'])->name('parts.store');
+
+Route::get('/service-center', [ServiceCenterController::class, 'index'])->name('service-center');
+Route::post('/service-center', [ServiceCenterController::class, 'store'])->name('service-center.store');
+
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
 
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 

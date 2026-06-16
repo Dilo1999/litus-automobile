@@ -1,165 +1,125 @@
 @php
-    $accent = '#c19b46';
-    $accentHover = '#a8843a';
+    $phone = '+960 779 7442';
+    $phoneTel = 'tel:+9607797442';
+    $email = 'sales@litusgroup.mv';
+    $address = 'Ma. Elyzium, Buruzu magu, Malé, Maldives';
+    $whatsapp = 'https://wa.me/9607797442';
+    $heroImage = 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80';
+    $mapEmbed = 'https://maps.google.com/maps?q=LITUS+Group+Head+Office+Male+Maldives&t=m&z=15&output=embed&iwloc=near';
 @endphp
 
-<x-layouts.app title="Contact Us - Al Zaha General Trading">
-    <div class="min-h-screen" style="background-color: #F4F4F4;">
-        <x-shared.hero
-            tagline="Al Zaha"
-            title="Contact Us"
-            subtitle="Reach out to our team for inquiries, partnerships, or support. We're here to help your business grow."
-            background-image="images/background/contactBuild.png"
-        />
-
-        {{-- Contact content – light section --}}
-        <section class="relative py-10 md:py-16 overflow-hidden" style="background: #F4F4F4;">
-            <div class="relative z-10 site-container">
-                <div class="mb-8 md:mb-10">
-                    <h2 class="text-xl md:text-2xl font-bold tracking-tight text-stone-800">Get in touch</h2>
-                    <p class="mt-1 text-sm text-stone-600">Send a message or use the details below</p>
-                </div>
-
-                <div class="grid lg:grid-cols-12 gap-6 md:gap-8">
-                    {{-- Form card --}}
-                    <div class="lg:col-span-7">
-                        <div id="contact-form" class="rounded-2xl overflow-hidden scroll-mt-24 bg-white border border-stone-200 shadow-sm">
-                            <div class="px-6 sm:px-8 lg:px-10 py-8 md:py-10">
-                                <h3 class="text-lg font-semibold text-stone-800 mb-1">Send us a message</h3>
-                                <p class="text-sm text-stone-600 mb-6">Fill out the form below and we'll get back to you shortly.</p>
-
-                                <form action="{{ route('contact.store') }}" method="POST" class="space-y-5">
-                                    @csrf
-
-                                    <div class="grid sm:grid-cols-2 gap-5">
-                                        <div>
-                                            <label for="name" class="block text-xs font-medium text-stone-600 mb-1.5">Name</label>
-                                            <input
-                                                type="text"
-                                                id="name"
-                                                name="name"
-                                                required
-                                                class="contact-input w-full px-4 py-3 rounded-xl text-sm text-stone-800 placeholder-stone-400 transition-all outline-none bg-white border border-stone-200"
-                                                placeholder="Your name"
-                                            >
-                                        </div>
-                                        <div>
-                                            <label for="email" class="block text-xs font-medium text-stone-600 mb-1.5">Email</label>
-                                            <input
-                                                type="email"
-                                                id="email"
-                                                name="email"
-                                                required
-                                                class="contact-input w-full px-4 py-3 rounded-xl text-sm text-stone-800 placeholder-stone-400 transition-all outline-none bg-white border border-stone-200"
-                                                placeholder="you@company.com"
-                                            >
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label for="phone" class="block text-xs font-medium text-stone-600 mb-1.5">Phone</label>
-                                        <input
-                                            type="text"
-                                            id="phone"
-                                            name="phone"
-                                            class="contact-input w-full px-4 py-3 rounded-xl text-sm text-stone-800 placeholder-stone-400 transition-all outline-none bg-white border border-stone-200"
-                                            placeholder="+971 50 123 4567"
-                                        >
-                                    </div>
-
-                                    <div>
-                                        <label for="message" class="block text-xs font-medium text-stone-600 mb-1.5">Message</label>
-                                        <textarea
-                                            id="message"
-                                            name="message"
-                                            rows="4"
-                                            required
-                                            class="contact-input w-full px-4 py-3 rounded-xl text-sm text-stone-800 placeholder-stone-400 transition-all outline-none resize-none bg-white border border-stone-200"
-                                            placeholder="How can we help you?"
-                                        ></textarea>
-                                    </div>
-
-                                    <button
-                                        type="submit"
-                                        class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-black transition-all hover:opacity-95 active:scale-[0.99]"
-                                        style="background-color: {{ $accent }}; box-shadow: 0 4px 14px rgba(193, 155, 70, 0.35);"
-                                    >
-                                        Send message
-                                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                                        </svg>
-                                    </button>
-                                </form>
-                            </div>
+<x-layouts.app title="Contact Us - LITUS Automobiles">
+    <div class="min-h-screen bg-white text-gray-900">
+        {{-- Hero --}}
+        <section class="contact-hero page-hero-standard relative bg-[#00105B] text-white overflow-hidden">
+            <div class="site-container h-full flex items-center">
+                <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full py-4">
+                    <div class="order-2 lg:order-1 flex justify-center lg:justify-start">
+                        <div class="relative w-full max-w-[420px] aspect-[4/3] rounded-lg overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
+                            <img
+                                src="{{ $heroImage }}"
+                                alt="LITUS customer service team"
+                                class="w-full h-full object-cover object-center"
+                                loading="eager"
+                            >
                         </div>
                     </div>
+                    <div class="order-1 lg:order-2 text-center lg:text-left">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black mb-4 md:mb-5 leading-tight">Customer Service</h1>
+                        <p class="text-white/90 text-sm sm:text-base leading-relaxed max-w-lg mx-auto lg:mx-0 mb-6 md:mb-8">
+                            If you have questions about our motorcycles, services, or any general inquiries,
+                            our friendly customer service team is ready to help.
+                        </p>
+                        <a
+                            href="#contact-card"
+                            class="inline-flex items-center justify-center px-8 py-3 rounded-md bg-[#4da3ff] text-white text-sm font-bold tracking-wide no-underline hover:bg-[#3b8ee6] transition-colors"
+                        >
+                            Contact Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    {{-- Contact info + map --}}
-                    <div class="lg:col-span-5 space-y-6">
-                        {{-- Contact cards --}}
-                        <div class="space-y-4">
-                            <div class="rounded-2xl p-6 flex items-start gap-4 bg-white border border-stone-200 shadow-sm">
-                                <span class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center" style="background: rgba(193, 155, 70, 0.2);">
-                                    <svg class="w-5 h-5" style="color: {{ $accent }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                        <path d="M12 21s-6-5.1-6-10a6 6 0 0 1 12 0c0 4.9-6 10-6 10Z"/>
-                                        <circle cx="12" cy="11" r="2.5"/>
-                                    </svg>
-                                </span>
-                                <div>
-                                    <h3 class="text-sm font-semibold text-stone-800 mb-1">Office address</h3>
-                                    <p class="text-sm text-stone-600 leading-relaxed">
-                                        18B street, Umm Ramool-215,<br>
-                                        Al Rashidiya, Dubai
-                                    </p>
-                                </div>
-                            </div>
+        {{-- Overlapping contact card --}}
+        <section class="relative bg-white pb-16 md:pb-24 lg:pb-28">
+            <div class="site-container relative z-10 -mt-16 sm:-mt-20 md:-mt-28 lg:-mt-32">
+                <div
+                    id="contact-card"
+                    class="scroll-mt-28 bg-white rounded-2xl shadow-[0_18px_50px_rgba(15,23,42,0.14)] overflow-hidden border border-gray-100"
+                >
+                    <div class="grid lg:grid-cols-2">
+                        {{-- Contact details --}}
+                        <div class="px-6 sm:px-8 md:px-10 py-8 md:py-10 lg:py-12">
+                            <ul class="space-y-6 md:space-y-7 mb-8">
+                                <li class="flex items-start gap-4">
+                                    <span class="flex-shrink-0 w-11 h-11 rounded-full bg-[#00105B]/10 flex items-center justify-center text-[#00105B]">
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                            <path d="M5 4h4l2 5-3 1.5A11 11 0 0 0 13.5 16L15 13l5 2v4a2 2 0 0 1-2 2A14 14 0 0 1 3 6a2 2 0 0 1 2-2Z"/>
+                                        </svg>
+                                    </span>
+                                    <div>
+                                        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-1">Phone</p>
+                                        <a href="{{ $phoneTel }}" class="text-[#00105B] font-bold text-base sm:text-lg no-underline hover:text-[#4da3ff] transition-colors">{{ $phone }}</a>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-4">
+                                    <span class="flex-shrink-0 w-11 h-11 rounded-full bg-[#00105B]/10 flex items-center justify-center text-[#00105B]">
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                            <path d="M4 4h16v16H4z"/>
+                                            <path d="m4 7 8 5 8-5"/>
+                                        </svg>
+                                    </span>
+                                    <div>
+                                        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-1">Email</p>
+                                        <a href="mailto:{{ $email }}" class="text-[#00105B] font-bold text-base sm:text-lg no-underline hover:text-[#4da3ff] transition-colors break-all">{{ $email }}</a>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-4">
+                                    <span class="flex-shrink-0 w-11 h-11 rounded-full bg-[#00105B]/10 flex items-center justify-center text-[#00105B]">
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                            <path d="M12 21s-6-5.1-6-10a6 6 0 0 1 12 0c0 4.9-6 10-6 10Z"/>
+                                            <circle cx="12" cy="11" r="2.5"/>
+                                        </svg>
+                                    </span>
+                                    <div>
+                                        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-1">Address</p>
+                                        <p class="text-[#00105B] font-bold text-base sm:text-lg leading-relaxed">{{ $address }}</p>
+                                    </div>
+                                </li>
+                            </ul>
 
-                            <div class="rounded-2xl p-6 flex items-start gap-4 bg-white border border-stone-200 shadow-sm">
-                                <span class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center" style="background: rgba(193, 155, 70, 0.2);">
-                                    <svg class="w-5 h-5" style="color: {{ $accent }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                        <path d="M5 4h4l2 5-3 1.5A11 11 0 0 0 13.5 16L15 13l5 2v4a2 2 0 0 1-2 2A14 14 0 0 1 3 6a2 2 0 0 1 2-2Z"/>
-                                    </svg>
-                                </span>
-                                <div>
-                                    <h3 class="text-sm font-semibold text-stone-800 mb-1">Phone</h3>
-                                    <a href="tel:+971043967075" class="text-sm text-stone-600 transition-colors contact-link-hover">
-                                        +971 04 396 7075
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="rounded-2xl p-6 flex items-start gap-4 bg-white border border-stone-200 shadow-sm">
-                                <span class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center" style="background: rgba(193, 155, 70, 0.2);">
-                                    <svg class="w-5 h-5" style="color: {{ $accent }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <div class="flex items-center gap-3">
+                                <a href="https://www.facebook.com/litusautomobiles" target="_blank" rel="noopener noreferrer" class="contact-social contact-social--facebook" aria-label="Facebook">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                </a>
+                                <a href="{{ $whatsapp }}" target="_blank" rel="noopener noreferrer" class="contact-social contact-social--whatsapp" aria-label="WhatsApp">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.882 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                </a>
+                                <a href="mailto:{{ $email }}" class="contact-social contact-social--email" aria-label="Email">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                         <path d="M4 4h16v16H4z"/>
                                         <path d="m4 7 8 5 8-5"/>
                                     </svg>
-                                </span>
-                                <div>
-                                    <h3 class="text-sm font-semibold text-stone-800 mb-1">Email</h3>
-                                    <a href="mailto:sales@alzahageneraltrading.com" class="text-sm text-stone-600 transition-colors contact-link-hover break-all">
-                                        sales@alzahageneraltrading.com
-                                    </a>
-                                </div>
+                                </a>
                             </div>
                         </div>
 
                         {{-- Map --}}
-                        <div class="rounded-2xl overflow-hidden bg-white border border-stone-200 shadow-sm">
+                        <div class="min-h-[280px] lg:min-h-[380px] bg-gray-100">
                             <iframe
                                 loading="lazy"
-                                src="https://maps.google.com/maps?q=18B%20street%2C%20umm%20ramool-215%2C%20Al%20rashidia%2C%20Dubai&amp;t=m&amp;z=14&amp;output=embed&amp;iwloc=near"
-                                title="Al Zaha General Trading - Dubai Office"
-                                aria-label="Al Zaha General Trading - Dubai Office"
+                                src="{{ $mapEmbed }}"
+                                title="LITUS Group Head Office - Malé, Maldives"
+                                aria-label="LITUS Group Head Office map"
                                 width="100%"
-                                height="220"
-                                class="w-full"
-                                style="border:0; filter: grayscale(0.3) contrast(1.05);"
+                                height="100%"
+                                class="w-full h-full min-h-[280px] lg:min-h-[380px]"
+                                style="border:0;"
                                 allowfullscreen
                                 referrerpolicy="no-referrer-when-downgrade"
                             ></iframe>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -167,10 +127,19 @@
     </div>
 
     <style>
-        .contact-input:focus {
-            border-color: {{ $accent }} !important;
-            box-shadow: 0 0 0 3px rgba(193, 155, 70, 0.2);
+        .contact-social {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            color: #ffffff;
+            transition: transform 0.2s ease, opacity 0.2s ease;
         }
-        .contact-link-hover:hover { color: #c19b46; }
+        .contact-social:hover { transform: translateY(-2px); opacity: 0.92; }
+        .contact-social--facebook { background: #1877f2; }
+        .contact-social--whatsapp { background: #25d366; }
+        .contact-social--email { background: #dc2626; }
     </style>
 </x-layouts.app>
