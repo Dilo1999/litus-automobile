@@ -1,5 +1,6 @@
 @php
     $hasHeroOverlay = request()->routeIs('home', 'about', 'motorcycles', 'ownership-plans', 'parts', 'service-center', 'contact', 'gallery');
+    $navLogo = asset('images/icon/Litus-Automobiles-white.png');
 
     $navItems = [
         ['label' => 'Home', 'url' => route('home'), 'active' => request()->routeIs('home')],
@@ -17,14 +18,8 @@
     <nav id="main-nav" class="main-nav transition-all duration-300 {{ $hasHeroOverlay ? 'main-nav--hero' : 'main-nav--scrolled' }}">
         <div class="site-container">
             <div class="h-16 lg:h-[4.5rem] relative flex items-center justify-between">
-                <a href="{{ route('home') }}" class="flex-shrink-0 flex items-center z-10">
-                    <img
-                        src="{{ asset('images/background/Logo-L-web.png') }}"
-                        alt="Al Zaha General Trading"
-                        class="nav-logo h-9 md:h-10 lg:h-11 w-auto object-contain transition-all duration-300"
-                        loading="eager"
-                        decoding="async"
-                    >
+                <a href="{{ route('home') }}" class="flex-shrink-0 flex items-center z-10" aria-label="LITUS Automobiles">
+                    <span class="nav-logo-slot h-9 md:h-10 lg:h-11 w-32 sm:w-36 md:w-40 lg:w-44" role="img" aria-hidden="true"></span>
                 </a>
 
                 <div class="hidden xl:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-1">
@@ -122,8 +117,21 @@
         border-color: rgba(255,255,255,0.35);
         background: rgba(255,255,255,0.1);
     }
-    .main-nav--hero .nav-logo {
-        filter: brightness(0) invert(1);
+    .nav-logo-slot {
+        display: block;
+        -webkit-mask-image: url('{{ $navLogo }}');
+        mask-image: url('{{ $navLogo }}');
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: #ffffff;
+        transition: background-color 0.3s ease;
+    }
+    .main-nav--hero .nav-logo-slot {
+        background-color: #ffffff;
     }
     .main-nav--scrolled {
         background: rgba(255, 255, 255, 0.97) !important;
@@ -146,8 +154,8 @@
         border-color: #e7e5e4;
         background: #fff;
     }
-    .main-nav--scrolled .nav-logo {
-        filter: none;
+    .main-nav--scrolled .nav-logo-slot {
+        background-color: #03045e;
     }
 
     .nav-link {
