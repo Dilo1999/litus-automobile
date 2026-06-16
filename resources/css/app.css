@@ -1,1 +1,69 @@
-/* Vite entry point — main styles live in Blade components for now */
+@import './components/views.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --color-navy: #00105B;
+        --color-navy-light: #001a7a;
+        --color-red: #C41E3A;
+        --color-red-dark: #a01830;
+        --color-bg: #F4F4F4;
+        --color-card: #EBEBEB;
+        --color-dark: #1a1a1a;
+        --color-muted: #57534e;
+        --font-serif: 'Playfair Display', Georgia, serif;
+        --font-sans: 'Figtree', system-ui, sans-serif;
+        --site-gutter: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
+        :root {
+            --site-gutter: 1.75rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        :root {
+            --site-gutter: 2.5rem;
+        }
+    }
+
+    html {
+        @apply scroll-smooth;
+    }
+
+    body {
+        @apply font-sans antialiased;
+    }
+}
+
+@layer components {
+    .site-container {
+        @apply mx-auto w-full max-w-full;
+        padding-left: var(--site-gutter);
+        padding-right: var(--site-gutter);
+    }
+
+    .litus-section-title {
+        @apply text-center font-serif text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-tight text-navy;
+    }
+
+    .litus-btn {
+        @apply inline-flex cursor-pointer items-center justify-center rounded border-0 bg-navy px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-white no-underline transition duration-200 hover:-translate-y-px hover:bg-navy-light hover:shadow-[0_4px_12px_rgba(0,16,91,0.25)];
+    }
+
+    .litus-btn--red {
+        @apply bg-litus-red hover:bg-litus-red-dark hover:shadow-[0_4px_12px_rgba(196,30,58,0.3)];
+    }
+
+    .page-hero-standard {
+        @apply box-border pt-[100px] pb-16 min-h-[calc(100px+64px+14rem)] sm:pt-[120px] sm:pb-20 sm:min-h-[calc(120px+80px+15rem)] md:pt-[165px] md:pb-[165px] md:min-h-[calc(165px+165px+24rem)];
+    }
+
+    .hero-section {
+        @apply flex flex-col justify-center;
+    }
+}

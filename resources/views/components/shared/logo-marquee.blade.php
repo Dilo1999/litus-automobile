@@ -3,10 +3,9 @@
 @endphp
 <section
     id="logo-marquee"
-    class="relative z-0 overflow-hidden flex items-center h-[8rem] md:h-[9rem]"
-    style="background: #F4F4F4;"
+    class="relative z-0 overflow-hidden flex items-center h-[8rem] md:h-[9rem] bg-litus-bg"
 >
-    <div class="marquee-track flex items-center gap-12 md:gap-16 w-max h-full" style="animation: logo-scroll-left 60s linear infinite;">
+    <div class="marquee-track flex items-center gap-12 md:gap-16 w-max h-full animate-logo-scroll">
         {{-- First set of logos --}}
         @foreach ($logos as $i)
             <div class="marquee-item flex-shrink-0 flex items-center justify-center h-full" style="width: 140px;">
@@ -21,10 +20,3 @@
         @endforeach
     </div>
 </section>
-
-<style>
-    @keyframes logo-scroll-left {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-    }
-</style>

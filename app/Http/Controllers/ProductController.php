@@ -186,7 +186,26 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        return view('pages.product', compact('product'));
+        $productName = $product->displayName();
+        $imageUrl = $product->imageUrl();
+        $categoryLabel = $product->categoryLabel();
+        $specs = $product->parsedSpecs();
+        $originalPrice = $product->formatMoney($product->original_price !== null ? (float) $product->original_price : null);
+        $salePrice = $product->formatMoney($product->sale_price !== null ? (float) $product->sale_price : null);
+        $specialDiscount = $product->formatMoney($product->resolvedSpecialDiscount());
+        $whatsapp = 'https://wa.me/9607797442?text=' . rawurlencode('Hi, I am interested in ' . $productName);
+
+        return view('pages.product', compact(
+            'product',
+            'productName',
+            'imageUrl',
+            'categoryLabel',
+            'specs',
+            'originalPrice',
+            'salePrice',
+            'specialDiscount',
+            'whatsapp',
+        ));
     }
 
     /**

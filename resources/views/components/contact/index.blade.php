@@ -125,21 +125,4 @@
             </div>
         </section>
     </div>
-
-    <style>
-        .contact-social {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            color: #ffffff;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-        }
-        .contact-social:hover { transform: translateY(-2px); opacity: 0.92; }
-        .contact-social--facebook { background: #1877f2; }
-        .contact-social--whatsapp { background: #25d366; }
-        .contact-social--email { background: #dc2626; }
-    </style>
 </x-layouts.app>

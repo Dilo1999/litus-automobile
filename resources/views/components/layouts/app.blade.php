@@ -90,115 +90,17 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
     
     <!-- Styles -->
-    {{-- Uncomment when Vite dev server is running: npm run dev --}}
-    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-    
-    <style>
-        :root {
-            --color-navy: #00105B;
-            --color-navy-light: #001a7a;
-            --color-red: #C41E3A;
-            --color-red-dark: #a01830;
-            --color-bg: #F4F4F4;
-            --color-card: #EBEBEB;
-            --color-dark: #1a1a1a;
-            --color-muted: #57534e;
-            --font-serif: 'Playfair Display', Georgia, serif;
-            --font-sans: 'Figtree', system-ui, sans-serif;
-            --site-gutter: 1.5rem;
-        }
-        @media (min-width: 640px) {
-            :root { --site-gutter: 1.75rem; }
-        }
-        @media (min-width: 1024px) {
-            :root { --site-gutter: 2.5rem; }
-        }
-        .site-container {
-            width: 100%;
-            max-width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: var(--site-gutter);
-            padding-right: var(--site-gutter);
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: var(--font-sans);
-        }
-        .litus-section-title {
-            font-family: var(--font-serif);
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 600;
-            color: var(--color-navy);
-            text-align: center;
-            letter-spacing: -0.02em;
-        }
-        .litus-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.625rem 1.5rem;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #fff;
-            background: var(--color-navy);
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .litus-btn:hover {
-            background: var(--color-navy-light);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 16, 91, 0.25);
-        }
-        .litus-btn--red {
-            background: var(--color-red);
-        }
-        .litus-btn--red:hover {
-            background: var(--color-red-dark);
-            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
-        }
-        /* Standard inner page hero height – matches Ownership Plans */
-        .page-hero-standard {
-            --page-hero-pt: 100px;
-            --page-hero-pb: 64px;
-            padding-top: var(--page-hero-pt);
-            padding-bottom: var(--page-hero-pb);
-            min-height: calc(var(--page-hero-pt) + var(--page-hero-pb) + 14rem);
-            box-sizing: border-box;
-        }
-        @media (min-width: 640px) {
-            .page-hero-standard {
-                --page-hero-pt: 120px;
-                --page-hero-pb: 80px;
-                min-height: calc(var(--page-hero-pt) + var(--page-hero-pb) + 15rem);
-            }
-        }
-        @media (min-width: 768px) {
-            .page-hero-standard {
-                --page-hero-pt: 165px;
-                --page-hero-pb: 165px;
-                min-height: calc(var(--page-hero-pt) + var(--page-hero-pb) + 24rem);
-            }
-        }
-        .hero-section {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-    </style>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @stack('styles')
 </head>
-<body class="antialiased" style="background-color: #F4F4F4;">
+<body @class([
+    'bg-litus-bg',
+    'bg-litus-product' => request()->routeIs('products.show'),
+])>
     <x-shared.navigation />
 
     @php
@@ -218,90 +120,6 @@
                 </button>
             </div>
         </div>
-        <style>
-            .form-success-popup {
-                --color-gold: var(--color-navy);
-                --color-gold-dim: var(--color-navy-light);
-                --color-dark: #1a1a1a;
-                position: fixed;
-                inset: 0;
-                z-index: 99999;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 1rem;
-            }
-            .form-success-popup-backdrop {
-                position: absolute;
-                inset: 0;
-                background: rgba(0,0,0,0.4);
-                backdrop-filter: blur(6px);
-            }
-            .form-success-popup-box {
-                position: relative;
-                width: 100%;
-                max-width: 380px;
-                background: #fff;
-                border-radius: 12px;
-                border: 1px solid #e7e5e4;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-                padding: 2rem 1.75rem;
-                text-align: center;
-            }
-            .form-success-popup-box::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 2px;
-                background: linear-gradient(to right, transparent, var(--color-gold), transparent);
-                border-radius: 12px 12px 0 0;
-            }
-            .form-success-popup-icon {
-                width: 3rem;
-                height: 3rem;
-                margin: 0 auto 1rem;
-                border-radius: 50%;
-                background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dim) 100%);
-                color: #fff;
-                font-size: 1.5rem;
-                font-weight: 700;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                line-height: 1;
-            }
-            .form-success-popup-title {
-                font-family: 'Playfair Display', serif;
-                font-size: 1.25rem;
-                font-weight: 600;
-                color: var(--color-dark);
-                margin: 0 0 0.5rem;
-            }
-            .form-success-popup-message {
-                font-size: 0.9375rem;
-                color: #57534e;
-                line-height: 1.5;
-                margin: 0 0 1.5rem;
-            }
-            .form-success-popup-btn {
-                display: inline-block;
-                background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dim) 100%);
-                color: var(--color-dark);
-                font-weight: 600;
-                font-size: 0.875rem;
-                padding: 0.625rem 1.75rem;
-                border: none;
-                border-radius: 8px;
-                cursor: pointer;
-                transition: transform 0.2s ease, box-shadow 0.2s ease;
-            }
-            .form-success-popup-btn:hover {
-                transform: translateY(-1px);
-                box-shadow: 0 6px 16px rgba(193, 155, 70, 0.35);
-            }
-        </style>
         <script>
             (function () {
                 var popup = document.getElementById('form-success-popup');
@@ -318,11 +136,13 @@
         {{ $slot }}
     </main>
 
-    @unless(request()->routeIs('home'))
+    @unless(request()->routeIs('home', 'products.show'))
         <x-shared.logo-marquee />
     @endunless
 
-    <x-shared.footer />
+    @unless(request()->routeIs('products.show'))
+        <x-shared.footer />
+    @endunless
 
     <x-quote.modal :external-trigger="true" />
 

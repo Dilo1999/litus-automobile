@@ -1,13 +1,13 @@
 <section id="whats-new" class="py-12 md:py-16 lg:py-20 bg-white overflow-hidden">
     <div class="site-container">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div class="lg:pr-6">
-                <h2 class="font-serif text-left text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-semibold text-[var(--color-navy)] tracking-tight mb-5 md:mb-6 leading-tight">What's New ?</h2>
-                <p class="text-[var(--color-muted)] text-base sm:text-lg md:text-xl leading-relaxed max-w-xl">
+            <div class="text-center mx-auto max-w-xl lg:max-w-none lg:mx-0 lg:px-4">
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-semibold text-[var(--color-navy)] tracking-tight mb-5 md:mb-6 leading-tight">What's New ?</h2>
+                <p class="text-[var(--color-muted)] text-base sm:text-lg md:text-xl leading-relaxed mx-auto">
                     Explore the latest models and innovations. From enhanced storage solutions to fuel-efficient engines,
                     our newest arrivals are designed for modern riders who demand style, comfort, and reliability.
                 </p>
-                <a href="#products" class="litus-btn mt-8 px-8 py-3.5 text-sm md:text-base">Discover More</a>
+                <a href="#products" class="litus-btn mt-8 px-8 py-3.5 text-sm md:text-base inline-flex">Discover More</a>
             </div>
             <div class="relative rounded-lg overflow-hidden shadow-xl">
                 <div class="relative aspect-[16/10] bg-black">

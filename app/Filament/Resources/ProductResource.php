@@ -36,6 +36,25 @@ class ProductResource extends Resource
                         ->label('Product Title')
                         ->maxLength(255),
 
+                    Forms\Components\TextInput::make('original_price')
+                        ->label('Original Price (MVR)')
+                        ->numeric()
+                        ->minValue(0)
+                        ->step(0.01),
+
+                    Forms\Components\TextInput::make('sale_price')
+                        ->label('Sale Price (MVR)')
+                        ->numeric()
+                        ->minValue(0)
+                        ->step(0.01),
+
+                    Forms\Components\TextInput::make('special_discount')
+                        ->label('Special Discount (MVR)')
+                        ->helperText('Shown in the red badge. Leave empty to calculate from original and sale price.')
+                        ->numeric()
+                        ->minValue(0)
+                        ->step(0.01),
+
                     Forms\Components\Textarea::make('description')
                         ->rows(4)
                         ->columnSpanFull(),

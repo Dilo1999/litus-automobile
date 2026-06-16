@@ -3,7 +3,7 @@
 ])
 
 @php
-    $heroBg = asset('images/background/6b38bb0353.jpeg');
+    $heroBg = asset('images/home_hero/Website-Banner-1.webp');
     $heroSliderRaw = \App\Models\Setting::get('hero_slider_images');
     $heroSliderImages = is_string($heroSliderRaw) ? json_decode($heroSliderRaw, true) : (is_array($heroSliderRaw) ? $heroSliderRaw : []);
     if (empty($heroSliderImages)) {
@@ -44,12 +44,3 @@
 
     <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#C41E3A] to-transparent opacity-80"></div>
 </section>
-
-<style>
-    .home-hero-full {
-        min-height: 100vh;
-        min-height: 100dvh;
-        height: 100vh;
-        height: 100dvh;
-    }
-</style>

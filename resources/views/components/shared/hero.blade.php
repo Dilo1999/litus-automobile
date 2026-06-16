@@ -45,7 +45,3 @@
         </div>
     </div>
 </section>
-
-<style>
-    .hero-icon { object-position: 45% 45%; }
-</style>

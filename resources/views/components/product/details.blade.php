@@ -2,807 +2,158 @@
     'product',
     'productName' => '',
     'imageUrl' => '',
-    'inStock' => false,
+    'categoryLabel' => 'Motorcycles',
+    'specs' => [],
+    'originalPrice' => null,
+    'salePrice' => null,
+    'specialDiscount' => null,
+    'whatsapp' => 'https://wa.me/9607797442',
 ])
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
-    
-    :root {
-        --color-dark: #1a1a1a;
-        --color-gold: #c19b46;
-        --color-gold-dim: #a8843a;
-        --color-cream: #1a1a1a;
-        --color-gray: #57534e;
-        --color-light: #fafaf9;
-        --font-serif: 'Playfair Display', serif;
-        --font-sans: 'Inter', sans-serif;
-    }
-    
-    * {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-    
-    .product-wrapper {
-        font-family: var(--font-sans);
-        background: #F4F4F4;
-        min-height: 100vh;
-    }
-    
-    /* Image Section */
-    .image-section {
-        background: #FFFFFF;
-        border: 1px solid #e7e5e4;
-        border-radius: 0;
-        padding: 4rem;
-        animation: fadeIn 0.8s ease-out;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
-        overflow: hidden;
-    }
+@php
+    $hasPricing = filled($originalPrice) || filled($salePrice);
+    $displayOriginal = $originalPrice ?? ($hasPricing ? null : 'MVR 95,000.00');
+    $displaySale = $salePrice ?? ($hasPricing ? null : 'MVR 84,000.00');
+    $displayDiscount = $specialDiscount ?? ($hasPricing ? null : 'MVR 11,000.00');
+    $buyUrl = $whatsapp;
+@endphp
 
-    .image-section:hover {
-        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.18), 0 10px 28px rgba(193, 155, 70, 0.22);
-        border-color: rgba(193, 155, 70, 0.6);
-        transform: translateY(-6px);
-    }
-    
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .image-container {
-        aspect-ratio: 1;
-        background: #FFFFFF;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-    }
-    
-    .product-image {
-        max-width: 95%;
-        max-height: 95%;
-        object-fit: contain;
-        filter: none;
-        transition: none;
-    }
-    
-    /* Description Section */
-    .description-section {
-        background: #FFFFFF;
-        border: 1px solid #e7e5e4;
-        padding: 3rem;
-        animation: fadeIn 0.8s ease-out 0.1s both;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .description-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, transparent, var(--color-gold) 50%, transparent);
-        opacity: 0.6;
-    }
-    
-    .section-heading {
-        font-family: var(--font-serif);
-        font-size: 1.75rem;
-        font-weight: 600;
-        color: var(--color-cream);
-        margin-bottom: 2rem;
-        letter-spacing: -0.01em;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-    
-    .section-heading::before {
-        content: '';
-        width: 4px;
-        height: 28px;
-        background: var(--color-gold);
-        border-radius: 2px;
-    }
-    
-    .description-text {
-        font-size: 1rem;
-        line-height: 1.8;
-        color: var(--color-gray);
-        font-weight: 300;
-    }
-    
-    .description-intro {
-        background: linear-gradient(135deg, rgba(193, 155, 70, 0.08), rgba(193, 155, 70, 0.02));
-        border-left: 3px solid var(--color-gold);
-        padding: 1.5rem 1.75rem;
-        margin-bottom: 2.5rem;
-        border-radius: 0 4px 4px 0;
-        position: relative;
-    }
-    
-    .description-intro::after {
-        content: '✦';
-        position: absolute;
-        top: 1.5rem;
-        right: 1.75rem;
-        color: var(--color-gold);
-        opacity: 0.3;
-        font-size: 1.5rem;
-    }
-    
-    .intro-title {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        font-size: 1.05rem;
-        font-weight: 600;
-        color: var(--color-dark);
-        margin-bottom: 0.75rem;
-    }
-    
-    .intro-title svg {
-        color: var(--color-gold);
-        width: 20px;
-        height: 20px;
-        flex-shrink: 0;
-    }
-    
-    .intro-subtitle {
-        font-size: 0.9rem;
-        color: var(--color-gray);
-        line-height: 1.6;
-    }
-    
-    .specs-list {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-        margin-bottom: 2rem;
-    }
-    
-    .spec-item {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 1rem;
-        align-items: start;
-        padding: 1.25rem;
-        background: #fafaf9;
-        border: 1px solid #f5f5f4;
-        border-radius: 4px;
-        transition: all 0.3s ease;
-    }
-    
-    .spec-item:hover {
-        background: rgba(193, 155, 70, 0.05);
-        border-color: rgba(193, 155, 70, 0.2);
-        transform: translateX(4px);
-    }
-    
-    .spec-icon {
-        width: 40px;
-        height: 40px;
-        background: white;
-        border: 1.5px solid rgba(193, 155, 70, 0.25);
-        border-radius: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
-    
-    .spec-icon svg {
-        width: 20px;
-        height: 20px;
-        color: var(--color-gold);
-    }
-    
-    .spec-content {
-        display: flex;
-        flex-direction: column;
-        gap: 0.35rem;
-    }
-    
-    .spec-label {
-        font-size: 0.8rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: var(--color-gold);
-    }
-    
-    .spec-value {
-        font-size: 0.95rem;
-        color: var(--color-dark);
-        line-height: 1.6;
-        font-weight: 400;
-    }
-    
-    .description-highlight {
-        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-        border: 1px solid rgba(193, 155, 70, 0.3);
-        border-radius: 4px;
-        padding: 1.75rem;
-        margin-top: 2rem;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .description-highlight::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
-    }
-    
-    .description-highlight::after {
-        content: '';
-        position: absolute;
-        bottom: -50%;
-        right: -10%;
-        width: 200px;
-        height: 200px;
-        background: radial-gradient(circle, rgba(193, 155, 70, 0.15), transparent);
-        border-radius: 50%;
-    }
-    
-    .highlight-content {
-        display: flex;
-        align-items: start;
-        gap: 1rem;
-        position: relative;
-        z-index: 1;
-    }
-    
-    .highlight-icon {
-        width: 44px;
-        height: 44px;
-        background: rgba(193, 155, 70, 0.2);
-        border: 1.5px solid rgba(193, 155, 70, 0.4);
-        border-radius: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
-    
-    .highlight-icon svg {
-        width: 22px;
-        height: 22px;
-        color: var(--color-gold);
-    }
-    
-    .highlight-text {
-        flex: 1;
-    }
-    
-    .highlight-text p {
-        font-size: 0.95rem;
-        line-height: 1.7;
-        color: #e7e5e4;
-        margin: 0;
-    }
-    
-    /* Features Grid */
-    .features-grid {
-        margin-top: 2.5rem;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.25rem;
-    }
-    
-    .feature-box {
-        background: #F4F4F4;
-        border: 1px solid #e7e5e4;
-        padding: 1.75rem;
-        transition: all 0.3s ease;
-    }
-    
-    .feature-box:hover {
-        background: rgba(193, 155, 70, 0.08);
-        border-color: rgba(193, 155, 70, 0.25);
-        transform: translateY(-2px);
-    }
-    
-    .feature-icon {
-        width: 40px;
-        height: 40px;
-        background: rgba(193, 155, 70, 0.12);
-        border: 1px solid rgba(193, 155, 70, 0.2);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1rem;
-    }
-    
-    .feature-icon svg {
-        color: var(--color-gold);
-        width: 20px;
-        height: 20px;
-    }
-    
-    .feature-title {
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: var(--color-cream);
-        margin-bottom: 0.4rem;
-    }
-    
-    .feature-desc {
-        font-size: 0.8rem;
-        color: var(--color-gray);
-        line-height: 1.5;
-    }
-    
-    /* Sidebar */
-    .sidebar {
-        animation: fadeIn 0.8s ease-out 0.2s both;
-    }
-    
-    .sidebar-card {
-        background: #FFFFFF;
-        border: 1px solid #e7e5e4;
-        padding: 2.5rem;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-    
-    /* Top Gold Line */
-    .sidebar-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: linear-gradient(to right, transparent, var(--color-gold), transparent);
-    }
-    
-    .availability-label {
-        font-size: 0.7rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: var(--color-gold);
-        margin-bottom: 0.75rem;
-        display: block;
-    }
-    
-    .stock-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.6rem;
-        padding: 0.65rem 1.25rem;
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        margin-bottom: 2rem;
-    }
-    
-    .stock-badge.in-stock {
-        background: rgba(16, 185, 129, 0.1);
-        color: #059669;
-        border: 1px solid rgba(5, 150, 105, 0.3);
-    }
-    
-    .stock-badge.out-of-stock {
-        background: rgba(239, 68, 68, 0.1);
-        color: #dc2626;
-        border: 1px solid rgba(220, 38, 38, 0.3);
-    }
-    
-    .status-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        animation: pulse 2s ease-in-out infinite;
-    }
-    
-    @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.5; }
-    }
-    
-    .stock-badge.in-stock .status-dot {
-        background: #10b981;
-        box-shadow: 0 0 10px #10b981;
-    }
-    
-    .stock-badge.out-of-stock .status-dot {
-        background: #ef4444;
-        box-shadow: 0 0 10px #ef4444;
-    }
-    
-    /* Feature List */
-    .feature-list {
-        margin-bottom: 2rem;
-    }
-    
-    .feature-item {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 1rem 0;
-        border-bottom: 1px solid #e7e5e4;
-        transition: all 0.3s ease;
-    }
-    
-    .feature-item:last-child {
-        border-bottom: none;
-    }
-    
-    .feature-item:hover {
-        padding-left: 0.5rem;
-    }
-    
-    .feature-item svg {
-        color: var(--color-gold);
-        flex-shrink: 0;
-        width: 18px;
-        height: 18px;
-    }
-    
-    .feature-item span {
-        font-size: 0.9rem;
-        color: var(--color-gray);
-        font-weight: 400;
-    }
-    
-    /* Quote Button */
-    .quote-button {
-        width: 100%;
-        background: #E9C068;
-        color: var(--color-dark);
-        font-weight: 600;
-        font-size: 0.85rem;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        padding: 1rem 2rem;
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        margin-bottom: 2rem;
-    }
-    
-    .quote-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(233, 192, 104, 0.4);
-    }
-    
-    /* Bottom Note */
-    .bottom-note {
-        padding-top: 2rem;
-        border-top: 1px solid #e7e5e4;
-    }
-    
-    .note-text {
-        font-size: 0.85rem;
-        line-height: 1.6;
-        color: var(--color-gray);
-        font-weight: 300;
-    }
-    
-    /* Responsive */
-    @media (max-width: 1024px) {
-        .section-heading {
-            font-size: 1.5rem;
-        }
-        
-        .image-section,
-        .description-section,
-        .sidebar-card {
-            padding: 2rem;
-        }
-        
-        .spec-item {
-            grid-template-columns: auto 1fr;
-            gap: 0.875rem;
-        }
-    }
-    
-    @media (max-width: 768px) {
-        .image-section {
-            padding: 2rem;
-        }
-        
-        .features-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        .description-intro {
-            padding: 1.25rem 1.5rem;
-        }
-        
-        .spec-item {
-            padding: 1rem;
-        }
-        
-        .spec-icon {
-            width: 36px;
-            height: 36px;
-        }
-        
-        .spec-icon svg {
-            width: 18px;
-            height: 18px;
-        }
-    }
-    
-    @media (max-width: 640px) {
-        .section-heading {
-            font-size: 1.35rem;
-        }
-        
-        .section-heading::before {
-            height: 24px;
-        }
-        
-        .image-section,
-        .description-section,
-        .sidebar-card {
-            padding: 1.5rem;
-        }
-        
-        .description-intro {
-            padding: 1rem 1.25rem;
-        }
-        
-        .intro-title {
-            font-size: 0.95rem;
-        }
-        
-        .intro-subtitle {
-            font-size: 0.85rem;
-        }
-        
-        /* Display specs as 2 columns on mobile */
-        .specs-list {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.75rem;
-        }
-        
-        .spec-item {
-            padding: 0.875rem;
-            grid-template-columns: 1fr;
-            gap: 0.5rem;
-            text-align: center;
-        }
-        
-        .spec-icon {
-            margin: 0 auto 0.5rem;
-        }
-        
-        .spec-label {
-            font-size: 0.7rem;
-        }
-        
-        .spec-value {
-            font-size: 0.8rem;
-        }
-        
-        .description-highlight {
-            padding: 1.25rem;
-        }
-        
-        .highlight-icon {
-            width: 38px;
-            height: 38px;
-        }
-        
-        .highlight-icon svg {
-            width: 20px;
-            height: 20px;
-        }
-        
-        .highlight-text p {
-            font-size: 0.875rem;
-        }
-    }
-</style>
+<div class="bg-litus-product text-white" id="product-content">
+    {{-- Hero / pricing --}}
+    <section class="page-hero-standard relative flex min-h-screen min-h-[100dvh] items-center justify-center overflow-hidden">
+        <div
+            class="absolute inset-0 scale-[1.08] bg-cover bg-center bg-no-repeat opacity-35 blur-[1px]"
+            style="background-image: url('{{ $imageUrl }}');"
+            aria-hidden="true"
+        ></div>
+        <div class="absolute inset-0 bg-litus-product-overlay/88"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-navy/35 via-transparent to-litus-product"></div>
 
-<section class="product-wrapper py-12 md:py-16">
-    <div class="site-container">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-start">
-            
-            {{-- Left: Image & Details --}}
-            <div class="lg:col-span-7 space-y-8">
-                
-                {{-- Product Image --}}
-                <div class="image-section">
-                    <div class="image-container">
-                        <img
-                            src="{{ $imageUrl }}"
-                            alt="{{ $productName }}"
-                            class="product-image"
-                            loading="lazy"
-                            decoding="async"
-                        >
-                    </div>
-                </div>
+        <div class="relative z-10 w-full py-8 text-center site-container">
+            <p class="mb-3 text-[0.8125rem] tracking-wide text-white/80">
+                Categories: {{ $categoryLabel }}
+            </p>
 
-                {{-- Description --}}
-                <div class="description-section">
-                    <h2 class="section-heading">Description</h2>
-                    
-                    @if($product->description)
-                        @php
-                            $description = $product->description;
-                            $lines = array_filter(array_map('trim', explode("\n", $description)));
-                            
-                            // Extract product title/intro if first line is short and doesn't contain colon
-                            $firstLine = reset($lines);
-                            $hasTitle = strlen($firstLine) < 150 && !str_contains($firstLine, ':');
-                            $productTitle = $hasTitle ? array_shift($lines) : null;
-                            
-                            // Parse specs (lines with colons) and other content
-                            $specs = [];
-                            $regularContent = [];
-                            
-                            foreach ($lines as $line) {
-                                if (str_contains($line, ':')) {
-                                    $parts = explode(':', $line, 2);
-                                    if (count($parts) === 2 && strlen(trim($parts[0])) > 0) {
-                                        $specs[] = [
-                                            'label' => trim($parts[0]),
-                                            'value' => trim($parts[1])
-                                        ];
-                                    }
-                                } elseif (strlen($line) > 10) {
-                                    $regularContent[] = $line;
-                                }
-                            }
-                        @endphp
-                        
-                        {{-- Product Title/Intro --}}
-                        @if($productTitle)
-                            <div class="description-intro">
-                                <div class="intro-title">
-                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                                    </svg>
-                                    {{ $productTitle }}
-                                </div>
-                            </div>
-                        @endif
-                        
-                        {{-- Specifications List (Generic for all products) --}}
-                        @if(count($specs) > 0)
-                            <div class="specs-list">
-                                @foreach($specs as $spec)
-                                    <div class="spec-item">
-                                        <div class="spec-icon">
-                                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                            </svg>
-                                        </div>
-                                        <div class="spec-content">
-                                            <div class="spec-label">{{ $spec['label'] }}</div>
-                                            <div class="spec-value">{{ $spec['value'] }}</div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @endif
-                        
-                        {{-- Regular Content (paragraphs, bullet points, etc.) --}}
-                        @if(count($regularContent) > 0)
-                            <div class="description-text" style="margin-top: {{ count($specs) > 0 ? '2rem' : '0' }}">
-                                @foreach($regularContent as $content)
-                                    <p style="margin-bottom: 1rem; line-height: 1.8;">{{ $content }}</p>
-                                @endforeach
-                            </div>
-                        @endif
-                        
-                        {{-- Fallback: Display full description as-is if no structure detected --}}
-                        @if(count($specs) === 0 && count($regularContent) === 0 && !$productTitle)
-                            <div class="description-text">
-                                {!! nl2br(e($description)) !!}
-                            </div>
-                        @endif
-                        
-                    @else
-                        <div class="description-intro">
-                            <div class="intro-title">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                                No Description Available
-                            </div>
-                            <div class="intro-subtitle">
-                                No detailed description is available for this product yet. Please contact us for more information about specifications, features, and availability.
-                            </div>
-                        </div>
-                    @endif
+            <h1 class="mb-5 font-serif text-[clamp(2rem,6vw,3.75rem)] font-bold leading-[1.05] tracking-tight">
+                {{ $productName }}
+            </h1>
 
-                    <div class="features-grid">
-                        <div class="feature-box">
-                            <div class="feature-icon">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                                </svg>
-                            </div>
-                            <div class="feature-title">Quality sourcing</div>
-                            <div class="feature-desc">Trusted supply for bulk orders</div>
-                        </div>
-
-                        <div class="feature-box">
-                            <div class="feature-icon">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                </svg>
-                            </div>
-                            <div class="feature-title">Fast response</div>
-                            <div class="feature-desc">Get a quote quickly from our team</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="mb-2 text-[clamp(0.875rem,2vw,1rem)] leading-loose text-white/90">
+                @if($displayOriginal)
+                    <p>Original Price : <span class="font-semibold">{{ $displayOriginal }}</span></p>
+                @endif
+                @if($displaySale)
+                    <p>Sale Price : <span class="font-semibold">{{ $displaySale }}</span></p>
+                @endif
+                @if(!$displayOriginal && !$displaySale)
+                    <p>Contact us for the latest pricing on this model.</p>
+                @endif
             </div>
 
-            {{-- Right: Sidebar --}}
-            <aside class="lg:col-span-5 lg:sticky lg:top-24 sidebar">
-                <div class="sidebar-card relative">
-                    <div>
-                        <span class="availability-label">Availability</span>
-                        <div class="stock-badge {{ $inStock ? 'in-stock' : 'out-of-stock' }}">
-                            <span class="status-dot"></span>
-                            {{ $inStock ? 'In Stock' : 'Out of Stock' }}
-                        </div>
-                    </div>
+            <p class="my-1 mb-5 font-script text-[clamp(2.5rem,8vw,4.5rem)] leading-tight text-white" aria-hidden="true">
+                Limited Offer
+            </p>
 
-                    <div class="feature-list">
-                        <div class="feature-item">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6m16 0v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4m16 0H4"/>
-                            </svg>
-                            <span>Bulk orders supported</span>
-                        </div>
-                        <div class="feature-item">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6M7 20h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H9l-2 2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/>
-                            </svg>
-                            <span>Invoice & documentation available</span>
-                        </div>
-                        <div class="feature-item">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                            <span>Quick turnaround on quotes</span>
-                        </div>
-                    </div>
+            @if($displayDiscount)
+                <div class="flex justify-center">
+                    <span class="inline-flex items-center justify-center rounded-full bg-litus-red px-5 py-2.5 text-[0.8125rem] font-bold tracking-wide text-white shadow-[0_8px_24px_rgba(196,30,58,0.35)]">
+                        Special Price: {{ $displayDiscount }}
+                    </span>
+                </div>
+            @endif
+        </div>
+    </section>
 
-                    <button
-                        type="button"
-                        id="open-quote-modal-product"
-                        class="quote-button"
-                    >
-                        Get a Free Quote
-                    </button>
+    {{-- Product showcase --}}
+    <section class="relative z-[2] -mt-8">
+        <div class="absolute inset-x-0 top-1/2 h-[clamp(180px,28vw,280px)] -translate-y-1/2 bg-gradient-to-r from-navy via-navy-band to-navy"></div>
+        <div class="relative z-10 site-container">
+            <div class="flex min-h-[clamp(260px,42vw,420px)] items-center justify-center px-0 py-6 pb-10">
+                <img
+                    src="{{ $imageUrl }}"
+                    alt="{{ $productName }}"
+                    class="w-full max-w-[720px] max-h-[clamp(240px,38vw,400px)] object-contain drop-shadow-[0_24px_48px_rgba(0,0,0,0.45)]"
+                    loading="eager"
+                    decoding="async"
+                >
+            </div>
+        </div>
+    </section>
 
-                    <div class="bottom-note">
-                        <p class="note-text">
-                            Need a custom price for volume? Request a quote and we'll get back with availability and the best offer.
+    {{-- Specifications --}}
+    <section class="relative -mt-px overflow-hidden">
+        <div
+            class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.14]"
+            style="background-image: url('{{ $imageUrl }}');"
+            aria-hidden="true"
+        ></div>
+        <div class="absolute inset-0 bg-litus-product-overlay/92"></div>
+
+        <div class="relative z-10 py-14 site-container md:py-20 lg:py-24">
+            <div class="mx-auto grid max-w-[980px] grid-cols-1 gap-5 md:grid-cols-2 md:gap-x-12 md:gap-y-6">
+                @foreach($specs as $spec)
+                    <div class="flex items-start gap-3.5">
+                        <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center text-white/85" aria-hidden="true">
+                            <svg class="h-[1.35rem] w-[1.35rem]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                                <circle cx="12" cy="12" r="9"/>
+                                <path d="M8 12l2.5 2.5L16 9"/>
+                            </svg>
+                        </span>
+                        <p class="m-0 text-[0.9375rem] leading-relaxed text-white/90">
+                            <span class="font-semibold">{{ $spec['label'] }} :</span> {{ $spec['value'] }}
                         </p>
                     </div>
-                </div>
-            </aside>
-        </div>
-    </div>
-</section>
+                @endforeach
+            </div>
 
-<x-quote.product-modal
-    :product-name="$productName"
-    open-button-id="open-quote-modal-product"
-    modal-id="quote-modal-product"
-    close-button-id="close-quote-modal-product"
-    external-trigger="true"
-/>
+            <div class="mt-10 flex justify-center">
+                <a
+                    href="{{ $buyUrl }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex min-w-[180px] items-center justify-center rounded-md border-2 border-white/90 px-9 py-3.5 text-[0.8125rem] font-bold uppercase tracking-widest text-white no-underline transition hover:-translate-y-px hover:bg-white hover:text-navy"
+                >
+                    Buy Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    {{-- Compact social strip --}}
+    <section class="border-t border-white/10 bg-litus-product-footer">
+        <div class="py-10 text-center site-container md:py-12">
+            <div class="mb-5 flex items-center justify-center gap-3.5">
+                <a
+                    href="https://www.facebook.com/litusautomobiles"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#1877f2] text-white no-underline transition hover:-translate-y-0.5 hover:opacity-90"
+                    aria-label="Facebook"
+                >
+                    <svg class="h-[1.15rem] w-[1.15rem]" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V6.75c0-.69.56-1.25 1.25-1.25h1.5V3h-2.1C13.16 3 12 4.16 12 5.9V8.5H9.5v3.25H12V21h3.5v-9.25H17.9L18.5 8.5H15.5z"/></svg>
+                </a>
+                <a
+                    href="https://www.instagram.com/litusautomobiles"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af] text-white no-underline transition hover:-translate-y-0.5 hover:opacity-90"
+                    aria-label="Instagram"
+                >
+                    <svg class="h-[1.15rem] w-[1.15rem]" viewBox="0 0 24 24" fill="currentColor"><path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm5 4.75A4.25 4.25 0 1 0 16.25 12 4.25 4.25 0 0 0 12 7.75zm5.75-2.5a1 1 0 1 0-1 1 1 1 0 0 0 1-1zM12 9.5A2.5 2.5 0 1 1 9.5 12 2.5 2.5 0 0 1 12 9.5z"/></svg>
+                </a>
+                <a
+                    href="{{ $whatsapp }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#25d366] text-white no-underline transition hover:-translate-y-0.5 hover:opacity-90"
+                    aria-label="WhatsApp"
+                >
+                    <svg class="h-[1.15rem] w-[1.15rem]" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.68 4.03 1.84 5.6L2 22l4.63-1.92a9.86 9.86 0 0 0 5.41 1.59h.01c5.46 0 9.91-4.45 9.91-9.91C22 6.45 17.5 2 12.04 2zm5.8 14.07c-.25.7-1.45 1.34-2 1.42-.5.08-1.15.12-1.85-.12-.43-.16-1-.52-1.72-.9-3.03-1.78-5-5.02-5.15-5.25-.14-.23-1.23-1.64-1.23-3.13s.78-2.22 1.1-2.52c.28-.28.74-.4 1.18-.4.14 0 .27.01.39.01.33.01.5.04.72.56.25.6.86 2.1.93 2.25.07.15.12.33.02.53-.1.2-.15.33-.3.5-.15.17-.31.38-.44.5-.15.15-.31.31-.13.61.18.3.8 1.32 1.72 2.14 1.18 1.05 2.17 1.38 2.48 1.53.31.16.49.14.67-.08.18-.22.77-.9.98-1.21.21-.31.42-.26.72-.16.3.1 1.9.9 2.23 1.06.33.16.55.24.63.37.08.14.08.8-.17 1.5z"/></svg>
+                </a>
+            </div>
+            <p class="m-0 text-xs tracking-wide text-white/55">
+                Copyright © {{ date('Y') }} LITUS AUTOMOBILES — All Rights Reserved.
+            </p>
+        </div>
+    </section>
+</div>

@@ -12,7 +12,7 @@
 ])
 
 {{-- Filter bar + product count – pill bar --}}
-<div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+<div class="mb-6 flex flex-wrap items-center justify-between gap-4" style="--filter-accent: {{ $accent }};">
     <button
         type="button"
         data-open-filter
@@ -256,72 +256,6 @@
         </p>
     @endif
 </div>
-
-<style>
-    .product-filter-search:focus { outline: none; }
-    .product-filter-checkbox { accent-color: {{ $accent }}; }
-    .product-filter-section-label {
-        font-size: 0.6875rem;
-        font-weight: 600;
-        color: #57534e;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-    }
-    .product-filter-section-label::before {
-        content: '';
-        display: inline-block;
-        width: 3px;
-        height: 0.75rem;
-        margin-right: 0.5rem;
-        vertical-align: middle;
-        border-radius: 2px;
-        background: {{ $accent }};
-    }
-    .product-filter-search-wrap:focus-within { box-shadow: 0 0 0 2px rgba(193,155,70,0.2); }
-    .product-filter-count {
-        min-width: 1.75rem;
-        height: 1.25rem;
-        padding: 0 0.375rem;
-        border-radius: 0.375rem;
-        font-size: 0.75rem;
-        font-weight: 500;
-        color: #78716c;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: #f5f5f4;
-        tabular-nums;
-    }
-    .product-filter-apply:hover { box-shadow: 0 6px 20px rgba(193,155,70,0.45); }
-    .product-filter-scrollbar::-webkit-scrollbar { width: 6px; }
-    .product-filter-scrollbar::-webkit-scrollbar-track { background: rgba(245,245,244,0.55); border-radius: 3px; }
-    .product-filter-scrollbar::-webkit-scrollbar-thumb { background: rgba(214,211,209,0.9); border-radius: 3px; }
-    .product-filter-scrollbar::-webkit-scrollbar-thumb:hover { background: {{ $accent }}; opacity: 0.7; }
-
-    /* Category tree */
-    .category-tree-row { margin-left: 0; }
-    .category-tree-row:hover { background: rgba(255,255,255,0.7); }
-    .category-tree-row--selected { background: rgba(193,155,70,0.08); }
-    .category-tree-row--selected:hover { background: rgba(193,155,70,0.12); }
-    .category-tree-name { color: #1c1917; }
-    .category-tree-row:hover .category-tree-name { color: #292524; }
-    .category-tree-count {
-        min-width: 1.5rem;
-        height: 1.125rem;
-        padding: 0 0.35rem;
-        border-radius: 0.25rem;
-        font-size: 0.6875rem;
-        font-weight: 500;
-        color: #78716c;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(245,245,244,0.75);
-        tabular-nums;
-    }
-    .category-tree-row--selected .category-tree-count { background: rgba(193,155,70,0.15); color: #57534e; }
-    .category-tree-toggle:hover { background: rgba(193,155,70,0.15) !important; color: #1c1917 !important; border-color: rgba(193,155,70,0.3) !important; }
-</style>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Category expand/collapse (works for flat and hierarchical tree) – event delegation

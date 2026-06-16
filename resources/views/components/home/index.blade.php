@@ -135,27 +135,3 @@
         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
     </a>
 </x-layouts.app>
-
-<style>
-    .floating-chat {
-        position: fixed;
-        bottom: 1.5rem;
-        right: 1.5rem;
-        z-index: 40;
-        width: 3.25rem;
-        height: 3.25rem;
-        border-radius: 50%;
-        background: var(--color-navy);
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 20px rgba(0, 16, 91, 0.35);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        text-decoration: none;
-    }
-    .floating-chat:hover {
-        transform: scale(1.08);
-        box-shadow: 0 6px 28px rgba(0, 16, 91, 0.45);
-    }
-</style>

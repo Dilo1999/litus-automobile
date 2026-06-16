@@ -38,7 +38,7 @@
         {{-- Hero --}}
         <section
             class="service-hero page-hero-standard relative bg-cover bg-center overflow-hidden"
-            style="background-image: linear-gradient(rgba(0,16,91,0.35), rgba(0,16,91,0.35)), url('{{ $heroBg }}');"
+            style="--hero-bg-image: url('{{ $heroBg }}'); background-image: linear-gradient(rgba(0,16,91,0.35), rgba(0,16,91,0.35)), var(--hero-bg-image);"
             aria-label="Service Center"
         ></section>
 
@@ -163,51 +163,4 @@
             </div>
         </section>
     </div>
-
-    <style>
-        .service-input {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.85);
-            border-radius: 6px;
-            color: #ffffff;
-            font-size: 14px;
-            padding: 11px 14px;
-            outline: none;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-        .service-input:focus {
-            border-color: #ffffff;
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
-        }
-        .service-input-date { color-scheme: dark; }
-        .service-submit-btn {
-            display: block;
-            width: 100%;
-            max-width: 220px;
-            margin-top: 0.5rem;
-            height: 44px;
-            padding: 0 16px;
-            font-size: 15px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-align: center;
-            color: #00105B;
-            background: #ffffff;
-            border: 2px solid #ffffff;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-        }
-        .service-submit-btn:hover {
-            background: transparent;
-            color: #ffffff;
-            transform: translateY(-1px);
-        }
-        @media (max-width: 768px) {
-            .service-hero {
-                background-image: linear-gradient(rgba(0,16,91,0.45), rgba(0,16,91,0.45)), url('{{ $heroBg }}') !important;
-                background-position: center 40% !important;
-            }
-        }
-    </style>
 </x-layouts.app>

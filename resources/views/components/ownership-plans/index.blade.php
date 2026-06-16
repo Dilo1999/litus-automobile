@@ -36,7 +36,7 @@
         {{-- Hero --}}
         <section
             class="ownership-hero page-hero-standard relative bg-cover bg-center text-white"
-            style="background-image: linear-gradient(90deg, rgba(5,10,25,0.92), rgba(5,10,25,0.55)), url('{{ $heroBg }}');"
+            style="--hero-bg-image: url('{{ $heroBg }}'); background-image: linear-gradient(90deg, rgba(5,10,25,0.92), rgba(5,10,25,0.55)), var(--hero-bg-image);"
         >
             <div class="site-container">
                 <div class="max-w-[720px] md:max-w-[720px]">
@@ -304,111 +304,4 @@
             handleResize();
         })();
     </script>
-
-    <style>
-        @media (max-width: 768px) {
-            .ownership-hero {
-                background-image: linear-gradient(180deg, rgba(5,10,25,0.94) 0%, rgba(5,10,25,0.82) 55%, rgba(5,10,25,0.65) 100%), url('{{ $heroBg }}') !important;
-                background-position: center 40% !important;
-            }
-            .plan-card-btn {
-                background: var(--plan-color) !important;
-                color: #ffffff !important;
-                border-color: var(--plan-color) !important;
-            }
-            .plan-card-btn::after { display: none !important; }
-            .help-btn-whatsapp {
-                background: #25D366 !important;
-                color: #ffffff !important;
-                border-color: #25D366 !important;
-            }
-            .help-btn-call {
-                background: #111827 !important;
-                color: #ffffff !important;
-                border-color: #111827 !important;
-            }
-            .help-btn::after { display: none !important; }
-        }
-
-        .plan-card:hover { border-color: color-mix(in srgb, var(--plan-color) 35%, #eef0f4); }
-
-        .plan-card-btn {
-            display: block;
-            height: 40px;
-            line-height: 36px;
-            padding: 0 12px;
-            font-size: 15px;
-            font-weight: 800;
-            background: transparent;
-            color: var(--plan-color);
-            border: 2px solid var(--plan-color);
-            border-radius: 8px;
-            letter-spacing: 1px;
-            text-align: center;
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-            transition: color 0.35s ease;
-        }
-        .plan-card-btn span { position: relative; z-index: 2; }
-        .plan-card-btn::after {
-            content: "";
-            position: absolute;
-            top: 0; left: 0;
-            width: 0; height: 100%;
-            background: var(--plan-color);
-            transition: width 0.35s ease;
-            z-index: 1;
-            border-radius: 6px;
-        }
-        .plan-card-btn:hover { color: #ffffff; }
-        .plan-card-btn:hover::after { width: 100%; }
-
-        .help-actions .help-btn {
-            flex: 0 0 calc(50% - 8px);
-            min-width: 0;
-            box-sizing: border-box;
-            display: block;
-            height: 44px;
-            line-height: 40px;
-            padding: 0 12px;
-            font-weight: 700;
-            font-size: 15px;
-            text-decoration: none;
-            background: transparent;
-            border: 2px solid;
-            border-radius: 8px;
-            letter-spacing: 1px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: color 0.35s ease, transform 0.2s ease;
-        }
-        .help-actions .help-btn span { position: relative; z-index: 2; }
-        .help-actions .help-btn::after {
-            content: "";
-            position: absolute;
-            top: 0; left: 0;
-            width: 0; height: 100%;
-            transition: width 0.35s ease;
-            z-index: 1;
-            border-radius: 6px;
-        }
-        .help-actions .help-btn:hover { color: #ffffff; transform: translateY(-1px); }
-        .help-actions .help-btn:hover::after { width: 100%; }
-        .help-btn-whatsapp { color: #25D366; border-color: #25D366; }
-        .help-btn-whatsapp::after { background: #25D366; }
-        .help-btn-call { color: #111827; border-color: #111827; margin-left: 16px; }
-        .help-btn-call::after { background: #111827; }
-        @media (max-width: 520px) {
-            .help-btn-call { margin-left: 0; }
-        }
-
-        .plan-drawer-overlay.active { opacity: 1; visibility: visible; }
-        .plan-drawer.active { right: 0; }
-        .plan-drawer-content h4 { margin: 22px 0 10px; color: #0f172a; font-size: 17px; font-weight: 700; }
-        .plan-drawer-content p { color: #4b5563; margin-bottom: 0.75rem; }
-        .plan-drawer-content ul { padding-left: 20px; margin-top: 8px; color: #374151; list-style: disc; }
-        .plan-drawer-content li { margin-bottom: 8px; }
-    </style>
 </x-layouts.app>

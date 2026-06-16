@@ -1,4 +1,4 @@
-<section id="offerings" class="py-12 md:py-16 lg:py-20" style="background: var(--color-bg);">
+<section id="offerings" class="bg-litus-bg py-12 md:py-16 lg:py-20">
     <div class="site-container">
         <h2 class="litus-section-title mb-10 md:mb-14">What We Offer at LITUS</h2>
 
@@ -56,37 +56,3 @@
         </div>
     </div>
 </section>
-
-<style>
-    .offer-card { text-align: center; }
-    .offer-card__img-wrap {
-        aspect-ratio: 4/3;
-        border-radius: 8px;
-        overflow: hidden;
-        margin-bottom: 1.25rem;
-        background: var(--color-card);
-    }
-    .offer-card__img-wrap--placeholder {
-        background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
-    }
-    .offer-card__img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-    }
-    .offer-card:hover .offer-card__img { transform: scale(1.05); }
-    .offer-card__title {
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--color-navy);
-        margin-bottom: 0.75rem;
-    }
-    .offer-card__text {
-        font-size: 0.875rem;
-        line-height: 1.65;
-        color: var(--color-muted);
-        max-width: 32ch;
-        margin: 0 auto;
-    }
-</style>

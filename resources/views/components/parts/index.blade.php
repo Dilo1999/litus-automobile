@@ -27,7 +27,7 @@
         {{-- Hero --}}
         <section
             class="parts-hero page-hero-standard relative flex items-center justify-center bg-cover bg-center overflow-hidden"
-            style="background-image: linear-gradient(rgba(0,16,91,0.72), rgba(0,16,91,0.72)), url('{{ $heroBg }}');"
+            style="--hero-bg-image: url('{{ $heroBg }}'); background-image: linear-gradient(rgba(0,16,91,0.72), rgba(0,16,91,0.72)), var(--hero-bg-image);"
         >
             <div class="relative z-10 flex flex-col items-center text-center px-4">
                 <div class="flex items-center gap-4 sm:gap-5">
@@ -175,86 +175,4 @@
             </div>
         </section>
     </div>
-
-    <style>
-        .parts-input {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.85);
-            border-radius: 6px;
-            color: #ffffff;
-            font-size: 14px;
-            padding: 12px 14px;
-            outline: none;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-        .parts-input::placeholder { color: rgba(255, 255, 255, 0.72); }
-        .parts-input option { color: #111827; background: #ffffff; }
-        .parts-input:focus {
-            border-color: #ffffff;
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
-        }
-        .parts-radio { color: rgba(255, 255, 255, 0.92); font-size: 14px; }
-        .parts-radio-input {
-            appearance: none;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.85);
-            border-radius: 50%;
-            background: transparent;
-            flex-shrink: 0;
-            position: relative;
-        }
-        .parts-radio-input:checked { border-color: #ffffff; }
-        .parts-radio-input:checked::after {
-            content: "";
-            position: absolute;
-            inset: 3px;
-            border-radius: 50%;
-            background: #ffffff;
-        }
-        .parts-submit-btn {
-            display: block;
-            width: 100%;
-            max-width: 220px;
-            height: 44px;
-            line-height: 40px;
-            padding: 0 16px;
-            font-size: 15px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-align: center;
-            color: #ffffff;
-            background: transparent;
-            border: 2px solid #ffffff;
-            border-radius: 8px;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transition: color 0.35s ease, transform 0.2s ease;
-        }
-        .parts-submit-btn span { position: relative; z-index: 2; }
-        .parts-submit-btn::after {
-            content: "";
-            position: absolute;
-            top: 0; left: 0;
-            width: 0; height: 100%;
-            background: #ffffff;
-            transition: width 0.35s ease;
-            z-index: 1;
-            border-radius: 6px;
-        }
-        .parts-submit-btn:hover { color: #00105B; transform: translateY(-1px); }
-        .parts-submit-btn:hover::after { width: 100%; }
-        @media (max-width: 768px) {
-            .parts-hero {
-                background-image: linear-gradient(rgba(0,16,91,0.82), rgba(0,16,91,0.82)), url('{{ $heroBg }}') !important;
-                background-position: center 40% !important;
-            }
-            .parts-submit-btn {
-                background: #ffffff;
-                color: #00105B;
-            }
-            .parts-submit-btn::after { display: none; }
-        }
-    </style>
 </x-layouts.app>
