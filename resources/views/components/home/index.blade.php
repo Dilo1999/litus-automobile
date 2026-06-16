@@ -4,14 +4,9 @@
     'promotionProducts' => collect(),
     'topSellingProducts' => collect(),
     'brandList' => [],
-    'categories' => [],
-    'categoryTree' => [],
     'brands' => [],
-    'selectedCategories' => [],
-    'selectedSubCategories' => [],
     'selectedBrands' => [],
     'search' => '',
-    'subCategoriesByCategory' => [],
 ])
 
 @php
@@ -49,14 +44,9 @@
 
                 <form method="GET" action="{{ route('home') }}#products" id="home-filters-form">
                     <x-product.filter
-                        :categories="$categories"
-                        :category-tree="$categoryTree"
                         :brands="$brands"
-                        :selected-categories="$selectedCategories"
-                        :selected-sub-categories="$selectedSubCategories"
                         :selected-brands="$selectedBrands"
                         :search="$search"
-                        :sub-categories-by-category="$subCategoriesByCategory"
                         :product-count="isset($products) && $products->count() > 0 ? ['first' => $products->firstItem(), 'last' => $products->lastItem(), 'total' => $products->total()] : null"
                         accent="{{ $navy }}"
                     />
@@ -109,12 +99,12 @@
                         @endif
                     @else
                         <div class="flex flex-col items-center justify-center py-16 md:py-24 px-6 rounded-2xl bg-[var(--color-bg)] border border-stone-200 mt-6">
-                            @if(!empty($selectedCategories) || !empty($selectedSubCategories) || !empty($selectedBrands) || (isset($search) && $search !== ''))
+                            @if(!empty($selectedBrands) || (isset($search) && $search !== ''))
                                 <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5" style="background: rgba(0,16,91,0.1);">
                                     <svg class="w-7 h-7" style="color: {{ $navy }};" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                                 </div>
                                 <h3 class="text-lg md:text-xl font-semibold text-stone-800">No products match your filters</h3>
-                                <p class="mt-2 text-sm text-stone-600 max-w-sm text-center">Try adjusting your search, category, or brand filters.</p>
+                                <p class="mt-2 text-sm text-stone-600 max-w-sm text-center">Try adjusting your search or brand filters.</p>
                                 <a href="{{ route('home') }}" class="litus-btn mt-6">Clear filters</a>
                             @else
                                 <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5 bg-stone-100">

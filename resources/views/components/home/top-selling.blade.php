@@ -24,7 +24,7 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-3 items-start">
             @foreach($items as $item)
-                <article class="top-card w-full">
+                <a href="{{ $item['url'] }}#product-content" class="top-card w-full block no-underline text-inherit">
                     <div class="top-card__media">
                         <img
                             src="{{ $item['image'] }}"
@@ -38,9 +38,9 @@
                         <p class="top-card__price">{{ $item['price'] }}</p>
                     </div>
                     <div class="top-card__action">
-                        <a href="{{ $item['url'] }}" class="top-card__cta">Learn More</a>
+                        <span class="top-card__cta">Learn More</span>
                     </div>
-                </article>
+                </a>
             @endforeach
         </div>
     </div>

@@ -1,12 +1,7 @@
 @props([
-    'categories' => [],
-    'categoryTree' => [],
     'brands' => [],
-    'selectedCategories' => [],
-    'selectedSubCategories' => [],
     'selectedBrands' => [],
     'search' => '',
-    'subCategoriesByCategory' => [],
     'productCount' => null,
     'accent' => '#c19b46',
 ])
@@ -52,7 +47,7 @@
                         </span>
                         <div class="min-w-0">
                             <p class="text-sm font-bold text-stone-800">Refine results</p>
-                            <p class="text-xs text-stone-500 mt-0.5">Search, categories & brands</p>
+                            <p class="text-xs text-stone-500 mt-0.5">Search & brands</p>
                         </div>
                     </div>
                     <button
@@ -87,91 +82,6 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                             </span>
-                        </div>
-                    </div>
-
-                    {{-- Categories (hierarchical when categoryTree provided) --}}
-                    <div class="product-filter-section">
-                        <div class="flex items-center justify-between mb-3">
-                            <p class="product-filter-section-label">Categories</p>
-                        </div>
-                        <div class="product-filter-list space-y-0.5 max-h-80 overflow-y-auto pr-1 product-filter-scrollbar rounded-xl border border-white/40 bg-white/45 p-1.5 shadow-inner backdrop-blur-md">
-                            @if(!empty($categoryTree))
-                                @include('components.product.partials.category-tree-filter', [
-                                    'nodes' => $categoryTree,
-                                    'depth' => 0,
-                                    'selectedCategories' => $selectedCategories,
-                                    'selectedSubCategories' => $selectedSubCategories,
-                                    'context' => 'drawer',
-                                ])
-                            @else
-                                @forelse($categories as $categoryName => $count)
-                                    @php
-                                        $categorySubCategories = $subCategoriesByCategory[$categoryName] ?? [];
-                                        $activeSubCategories = array_intersect(array_keys($categorySubCategories), $selectedSubCategories);
-                                        $isExpanded = !empty($activeSubCategories);
-                                        $categoryKey = md5($categoryName) . '-drawer';
-                                        $isCategorySelected = in_array($categoryName, $selectedCategories);
-                                    @endphp
-
-                                    <div class="rounded-xl border overflow-hidden transition-all backdrop-blur-md {{ $isCategorySelected ? 'ring-1 border-white/60 bg-white/65 shadow-sm' : 'border-white/35 bg-white/35 hover:border-white/55' }}" style="{{ $isCategorySelected ? '--tw-ring-color: rgba(193,155,70,0.35);' : '' }}">
-                                        <div class="flex items-center gap-2 px-3 py-2.5">
-                                            @if(!empty($categorySubCategories))
-                                                <button
-                                                    type="button"
-                                                    class="category-tree-toggle inline-flex items-center justify-center w-7 h-7 text-stone-500 rounded-lg shrink-0 transition-colors border border-transparent hover:bg-stone-200/60 hover:text-stone-800"
-                                                    data-category-toggle="{{ $categoryKey }}"
-                                                    aria-expanded="{{ $isExpanded ? 'true' : 'false' }}"
-                                                >
-                                                    <span data-toggle-icon class="text-sm font-semibold">{{ $isExpanded ? '−' : '+' }}</span>
-                                                </button>
-                                            @else
-                                                <span class="w-7 shrink-0 block"></span>
-                                            @endif
-
-                                            <label class="flex items-center gap-3 cursor-pointer group flex-1 min-w-0">
-                                                <input
-                                                    type="checkbox"
-                                                    name="category[]"
-                                                    value="{{ $categoryName }}"
-                                                    {{ $isCategorySelected ? 'checked' : '' }}
-                                                    class="product-filter-checkbox rounded border-stone-300 h-4 w-4 shrink-0"
-                                                >
-                                                <div class="flex items-center justify-between gap-2 flex-1 min-w-0">
-                                                    <span class="text-sm font-medium text-stone-700 group-hover:text-stone-900 truncate">{{ $categoryName }}</span>
-                                                    <span class="product-filter-count">{{ $count }}</span>
-                                                </div>
-                                            </label>
-                                        </div>
-
-                                        @if(!empty($categorySubCategories))
-                                            <div
-                                                class="border-t border-stone-100 bg-stone-50/50 pl-3 pr-2 py-2 space-y-0.5 {{ $isExpanded ? '' : 'hidden' }}"
-                                                data-subcategories-for="{{ $categoryKey }}"
-                                            >
-                                                @foreach($categorySubCategories as $subCategoryName => $subCount)
-                                                    @php $isSubSelected = in_array($subCategoryName, $selectedSubCategories); @endphp
-                                                    <label class="flex items-center gap-2 cursor-pointer group rounded-lg px-2 py-1.5 hover:bg-white/80 transition-colors">
-                                                        <input
-                                                            type="checkbox"
-                                                            name="sub_category[]"
-                                                            value="{{ $subCategoryName }}"
-                                                            {{ $isSubSelected ? 'checked' : '' }}
-                                                            class="product-filter-checkbox rounded border-stone-300 h-3.5 w-3.5 shrink-0"
-                                                        >
-                                                        <div class="flex items-center justify-between gap-2 flex-1 min-w-0">
-                                                            <span class="text-xs text-stone-600 group-hover:text-stone-900 truncate">{{ $subCategoryName }}</span>
-                                                            <span class="product-filter-count text-[11px] min-w-[1.5rem] h-4">{{ $subCount }}</span>
-                                                        </div>
-                                                    </label>
-                                                @endforeach
-                                            </div>
-                                        @endif
-                                    </div>
-                                @empty
-                                    <p class="text-sm text-stone-500 py-3 px-3">No categories yet.</p>
-                                @endforelse
-                            @endif
                         </div>
                     </div>
 
@@ -219,7 +129,7 @@
                             </svg>
                         </button>
 
-                        @if(!empty($selectedCategories) || !empty($selectedSubCategories) || !empty($selectedBrands) || (isset($search) && $search !== ''))
+                        @if(!empty($selectedBrands) || (isset($search) && $search !== ''))
                             <a
                                 href="{{ route('home') }}"
                                 class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 text-sm font-medium rounded-xl border-2 border-white/45 text-stone-700 hover:bg-white/60 hover:border-white/60 hover:text-stone-900 transition-colors bg-white/35 backdrop-blur-md"
@@ -258,28 +168,6 @@
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Category expand/collapse (works for flat and hierarchical tree) – event delegation
-        document.addEventListener('click', function (e) {
-            var btn = e.target.closest('[data-category-toggle]');
-            if (!btn || btn.getAttribute('data-category-toggle') === '') return;
-            var key = btn.getAttribute('data-category-toggle');
-            var container = document.querySelector('[data-subcategories-for="' + key + '"]');
-            if (!container) return;
-
-            e.preventDefault();
-            e.stopPropagation();
-
-            var currentlyExpanded = btn.getAttribute('aria-expanded') === 'true';
-            var newExpanded = !currentlyExpanded;
-            btn.setAttribute('aria-expanded', newExpanded ? 'true' : 'false');
-
-            var icon = btn.querySelector('[data-toggle-icon]');
-            if (icon) icon.textContent = newExpanded ? '\u2212' : '+';
-
-            container.classList.toggle('hidden', !newExpanded);
-        });
-
-        // Drawer open/close
         var openFilterButtons = document.querySelectorAll('[data-open-filter]');
         var closeMobileFilter = document.getElementById('close-mobile-filter');
         var mobileOverlay = document.getElementById('mobile-filter-overlay');

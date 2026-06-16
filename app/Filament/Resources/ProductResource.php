@@ -54,11 +54,12 @@ class ProductResource extends Resource
                         ->numeric()
                         ->minValue(0)
                         ->step(0.01),
-
-                    Forms\Components\Textarea::make('description')
-                        ->rows(4)
-                        ->columnSpanFull(),
                 ])
+                ->columns(2),
+
+            Forms\Components\Section::make('Specifications')
+                ->description('Technical details shown on the product page.')
+                ->schema(static::specificationFields())
                 ->columns(2),
 
             Forms\Components\Section::make('Inventory')
@@ -69,64 +70,6 @@ class ProductResource extends Resource
                         ->default(0)
                         ->rule('integer')
                         ->rule('min:0'),
-
-                    Forms\Components\Select::make('category')
-                        ->label('Category')
-                        ->options(fn () => \App\Models\Category::query()
-                            ->whereNull('parent_id')
-                            ->orderBy('name')
-                            ->pluck('name', 'name')
-                            ->toArray())
-                        ->searchable()
-                        ->required()
-                        ->reactive()
-                        ->afterStateUpdated(function ($set) {
-                            $set('cat_level_2', null);
-                            $set('cat_level_3', null);
-                            $set('cat_level_4', null);
-                            $set('cat_level_5', null);
-                        }),
-
-                    Forms\Components\Select::make('cat_level_2')
-                        ->label('Sub Category')
-                        ->options(fn ($get) => \App\Models\Category::getDirectChildrenInRoot($get('category'), null))
-                        ->searchable()
-                        ->placeholder('Optional')
-                        ->reactive()
-                        ->afterStateUpdated(function ($set) {
-                            $set('cat_level_3', null);
-                            $set('cat_level_4', null);
-                            $set('cat_level_5', null);
-                        })
-                        ->visible(fn ($get) => filled($get('category'))),
-
-                    Forms\Components\Select::make('cat_level_3')
-                        ->label('Sub Sub Category')
-                        ->options(fn ($get) => \App\Models\Category::getDirectChildrenInRoot($get('category'), $get('cat_level_2')))
-                        ->searchable()
-                        ->placeholder('Optional')
-                        ->reactive()
-                        ->afterStateUpdated(function ($set) {
-                            $set('cat_level_4', null);
-                            $set('cat_level_5', null);
-                        })
-                        ->visible(fn ($get) => filled($get('cat_level_2'))),
-
-                    Forms\Components\Select::make('cat_level_4')
-                        ->label('Sub Sub Sub Category')
-                        ->options(fn ($get) => \App\Models\Category::getDirectChildrenInRoot($get('category'), $get('cat_level_3')))
-                        ->searchable()
-                        ->placeholder('Optional')
-                        ->reactive()
-                        ->afterStateUpdated(fn ($set) => $set('cat_level_5', null))
-                        ->visible(fn ($get) => filled($get('cat_level_3'))),
-
-                    Forms\Components\Select::make('cat_level_5')
-                        ->label(fn ($get) => 'Sub Sub Sub Sub Category' . (filled($get('cat_level_4')) ? ' (' . $get('cat_level_4') . ')' : ''))
-                        ->options(fn ($get) => \App\Models\Category::getDirectChildrenInRoot($get('category'), $get('cat_level_4')))
-                        ->searchable()
-                        ->placeholder('Optional')
-                        ->visible(fn ($get) => filled($get('cat_level_4'))),
                 ])
                 ->columns(2),
 
@@ -175,10 +118,6 @@ class ProductResource extends Resource
                     ->toggleable()
                     ->limit(30),
 
-                Tables\Columns\TextColumn::make('category')
-                    ->searchable()
-                    ->sortable(),
-
                 Tables\Columns\TextColumn::make('brand')
                     ->label('Brand')
                     ->searchable()
@@ -210,6 +149,19 @@ class ProductResource extends Resource
         return [
             //
         ];
+    }
+
+    /**
+     * @return array<int, Forms\Components\TextInput>
+     */
+    protected static function specificationFields(): array
+    {
+        return collect(Product::SPEC_FIELDS)
+            ->map(fn (string $label, string $key) => Forms\Components\TextInput::make("specs.{$key}")
+                ->label($label)
+                ->maxLength(255))
+            ->values()
+            ->all();
     }
 
     public static function getPages(): array

@@ -871,6 +871,9 @@
     }
     .promo-card {
         position: relative;
+        display: block;
+        text-decoration: none;
+        color: inherit;
         background: var(--color-card);
         border-radius: 8px;
         overflow: hidden;
@@ -948,6 +951,8 @@
 #top-selling .top-card {
         display: flex;
         flex-direction: column;
+        text-decoration: none;
+        color: inherit;
         background: #fff;
         border-radius: 12px;
         overflow: hidden;
@@ -1600,30 +1605,6 @@
     .product-filter-scrollbar::-webkit-scrollbar-track { background: rgba(245,245,244,0.55); border-radius: 3px; }
     .product-filter-scrollbar::-webkit-scrollbar-thumb { background: rgba(214,211,209,0.9); border-radius: 3px; }
     .product-filter-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--filter-accent); opacity: 0.7; }
-
-    /* Category tree */
-    .category-tree-row { margin-left: 0; }
-    .category-tree-row:hover { background: rgba(255,255,255,0.7); }
-    .category-tree-row--selected { background: rgba(193,155,70,0.08); }
-    .category-tree-row--selected:hover { background: rgba(193,155,70,0.12); }
-    .category-tree-name { color: #1c1917; }
-    .category-tree-row:hover .category-tree-name { color: #292524; }
-    .category-tree-count {
-        min-width: 1.5rem;
-        height: 1.125rem;
-        padding: 0 0.35rem;
-        border-radius: 0.25rem;
-        font-size: 0.6875rem;
-        font-weight: 500;
-        color: #78716c;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(245,245,244,0.75);
-        font-variant-numeric: tabular-nums;
-    }
-    .category-tree-row--selected .category-tree-count { background: rgba(193,155,70,0.15); color: #57534e; }
-    .category-tree-toggle:hover { background: rgba(193,155,70,0.15) !important; color: #1c1917 !important; border-color: rgba(193,155,70,0.3) !important; }
 
 /* --- resources-views-components-quote-popup --- */
 .quote-popup-wrapper {

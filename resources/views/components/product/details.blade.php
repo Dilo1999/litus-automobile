@@ -2,7 +2,6 @@
     'product',
     'productName' => '',
     'imageUrl' => '',
-    'categoryLabel' => 'Motorcycles',
     'specs' => [],
     'originalPrice' => null,
     'salePrice' => null,
@@ -30,10 +29,6 @@
         <div class="absolute inset-0 bg-gradient-to-b from-navy/35 via-transparent to-litus-product"></div>
 
         <div class="relative z-10 w-full py-8 text-center site-container">
-            <p class="mb-3 text-[0.8125rem] tracking-wide text-white/80">
-                Categories: {{ $categoryLabel }}
-            </p>
-
             <h1 class="mb-5 font-serif text-[clamp(2rem,6vw,3.75rem)] font-bold leading-[1.05] tracking-tight">
                 {{ $productName }}
             </h1>
@@ -90,6 +85,7 @@
         <div class="absolute inset-0 bg-litus-product-overlay/92"></div>
 
         <div class="relative z-10 py-14 site-container md:py-20 lg:py-24">
+            @if(count($specs) > 0)
             <div class="mx-auto grid max-w-[980px] grid-cols-1 gap-5 md:grid-cols-2 md:gap-x-12 md:gap-y-6">
                 @foreach($specs as $spec)
                     <div class="flex items-start gap-3.5">
@@ -105,6 +101,7 @@
                     </div>
                 @endforeach
             </div>
+            @endif
 
             <div class="mt-10 flex justify-center">
                 <a

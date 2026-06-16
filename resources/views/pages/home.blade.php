@@ -4,12 +4,7 @@
     :promotionProducts="$promotionProducts ?? collect()"
     :topSellingProducts="$topSellingProducts ?? collect()"
     :brandList="$brandList ?? []"
-    :categories="$categories ?? []"
-    :category-tree="$categoryTree ?? []"
     :brands="$brands ?? []"
-    :selectedCategories="$selectedCategories ?? []"
-    :selectedSubCategories="$selectedSubCategories ?? []"
     :selectedBrands="$selectedBrands ?? []"
     :search="$search ?? ''"
-    :subCategoriesByCategory="$subCategoriesByCategory ?? []"
 />

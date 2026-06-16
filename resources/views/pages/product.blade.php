@@ -4,7 +4,6 @@
             :product="$product"
             :product-name="$productName"
             :image-url="$imageUrl"
-            :category-label="$categoryLabel"
             :specs="$specs"
             :original-price="$originalPrice"
             :sale-price="$salePrice"

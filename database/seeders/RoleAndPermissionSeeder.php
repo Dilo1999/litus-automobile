@@ -11,8 +11,8 @@ class RoleAndPermissionSeeder extends Seeder
     public function run(): void
     {
         $permissions = [
-            ['name' => 'view_catalog', 'group' => 'Catalog', 'description' => 'View products, categories, brands'],
-            ['name' => 'edit_catalog', 'group' => 'Catalog', 'description' => 'Create and edit products, categories, brands'],
+            ['name' => 'view_catalog', 'group' => 'Catalog', 'description' => 'View products and brands'],
+            ['name' => 'edit_catalog', 'group' => 'Catalog', 'description' => 'Create and edit products and brands'],
             ['name' => 'view_posts', 'group' => 'Content', 'description' => 'View posts'],
             ['name' => 'edit_posts', 'group' => 'Content', 'description' => 'Create and edit posts'],
             ['name' => 'view_users', 'group' => 'Settings', 'description' => 'View users list'],

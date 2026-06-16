@@ -23,7 +23,7 @@
 
     <div class="promotions-grid site-container">
         @foreach($items as $item)
-            <article class="promo-card group">
+            <a href="{{ $item['url'] }}#product-content" class="promo-card group block no-underline text-inherit">
                 <div class="promo-card__badge">Limited Offer</div>
                 <div class="promo-card__img-wrap">
                     <img src="{{ $item['image'] }}" alt="{{ $item['name'] }}" class="promo-card__img" loading="lazy">
@@ -31,9 +31,9 @@
                 <div class="promo-card__body">
                     <h3 class="promo-card__title">{{ $item['name'] }}</h3>
                     <p class="promo-card__price">Special Offer: <span>{{ $item['price'] }}</span></p>
-                    <a href="{{ $item['url'] }}" class="litus-btn promo-card__btn">Buy Now</a>
+                    <span class="litus-btn promo-card__btn">Buy Now</span>
                 </div>
-            </article>
+            </a>
         @endforeach
     </div>
 </section>

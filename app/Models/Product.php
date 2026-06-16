@@ -9,13 +9,34 @@ class Product extends Model
 {
     use HasFactory;
 
+    /**
+     * @var array<string, string>
+     */
+    public const SPEC_FIELDS = [
+        'engine_capacity' => 'Engine Capacity',
+        'fuel_type' => 'Fuel Type',
+        'carburation' => 'Carburation',
+        'brakes_front' => 'Brakes Front',
+        'brakes_rear' => 'Brakes rear',
+        'suspension_front' => 'Suspension Front',
+        'wheels_front' => 'Wheels Front',
+        'wheels_rear' => 'Wheels Rear',
+        'fuel_tank_capacity' => 'Fuel Tank Capacity',
+        'ground_clearance' => 'Ground Clearance',
+        'frame_type' => 'Frame Type',
+        'net_weight' => 'Net Weight',
+        'seat_height' => 'Seat Height',
+        'clutch' => 'Clutch',
+        'final_drive' => 'Final Drive',
+        'transmission_type' => 'Transmission Type',
+    ];
+
     protected $fillable = [
         'name',
         'title',
         'description',
+        'specs',
         'image',
-        'category',
-        'sub_category',
         'brand',
         'original_price',
         'sale_price',
@@ -24,6 +45,7 @@ class Product extends Model
     ];
 
     protected $casts = [
+        'specs' => 'array',
         'original_price' => 'decimal:2',
         'sale_price' => 'decimal:2',
         'special_discount' => 'decimal:2',
@@ -42,11 +64,6 @@ class Product extends Model
         }
 
         return asset('images/product/HONDA-AIR-BLADE-125-PREMIUM-VERSION-2025-SILVER-RED-BLACK-300x300.webp');
-    }
-
-    public function categoryLabel(): string
-    {
-        return $this->sub_category ?: ($this->category ?: 'Motorcycles');
     }
 
     public function resolvedSpecialDiscount(): ?float
@@ -76,13 +93,37 @@ class Product extends Model
      */
     public function parsedSpecs(): array
     {
+        $specs = [];
+        $stored = $this->specs ?? [];
+
+        foreach (self::SPEC_FIELDS as $key => $label) {
+            $value = trim((string) ($stored[$key] ?? ''));
+            if ($value !== '') {
+                $specs[] = [
+                    'label' => $label,
+                    'value' => $value,
+                ];
+            }
+        }
+
+        if (! empty($specs)) {
+            return $specs;
+        }
+
+        return $this->parsedSpecsFromLegacyDescription();
+    }
+
+    /**
+     * @return array<int, array{label: string, value: string}>
+     */
+    private function parsedSpecsFromLegacyDescription(): array
+    {
         if (! $this->description) {
-            return self::defaultSpecs();
+            return [];
         }
 
         $lines = array_filter(array_map('trim', explode("\n", $this->description)));
         $specs = [];
-        $hasColonLines = false;
 
         foreach ($lines as $line) {
             if (! str_contains($line, ':')) {
@@ -94,38 +135,12 @@ class Product extends Model
                 continue;
             }
 
-            $hasColonLines = true;
             $specs[] = [
                 'label' => trim($parts[0]),
                 'value' => trim($parts[1]),
             ];
         }
 
-        return $hasColonLines ? $specs : self::defaultSpecs();
-    }
-
-    /**
-     * @return array<int, array{label: string, value: string}>
-     */
-    public static function defaultSpecs(): array
-    {
-        return [
-            ['label' => 'Engine Capacity', 'value' => '160cc'],
-            ['label' => 'Fuel Type', 'value' => 'Gasoline'],
-            ['label' => 'Carburation', 'value' => 'Fuel Injection'],
-            ['label' => 'Brakes Front', 'value' => 'Disc - ABS'],
-            ['label' => 'Brakes rear', 'value' => 'Disc'],
-            ['label' => 'Suspension Front', 'value' => 'Telescopic Fork'],
-            ['label' => 'Wheels Front', 'value' => 'Cast'],
-            ['label' => 'Wheels Rear', 'value' => 'Cast'],
-            ['label' => 'Fuel Tank Capacity', 'value' => '8.1L'],
-            ['label' => 'Ground Clearance', 'value' => '135 mm'],
-            ['label' => 'Frame Type', 'value' => 'Double Cradle'],
-            ['label' => 'Net Weight', 'value' => '132 kg'],
-            ['label' => 'Seat Height', 'value' => '764 mm'],
-            ['label' => 'Clutch', 'value' => 'Automatic, Centrifugal, Dry Type'],
-            ['label' => 'Final Drive', 'value' => 'Belt'],
-            ['label' => 'Transmission Type', 'value' => 'Automatic CVT Transmission'],
-        ];
+        return $specs;
     }
 }

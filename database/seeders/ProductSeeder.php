@@ -18,7 +18,6 @@ class ProductSeeder extends Seeder
                 'name' => 'Premium Wireless Headphones',
                 'description' => 'High-quality wireless headphones with noise cancellation and 30-hour battery life.',
                 'price' => 199.99,
-                'category' => 'Electronics',
                 'stock' => 25,
                 'image' => 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500',
             ],
