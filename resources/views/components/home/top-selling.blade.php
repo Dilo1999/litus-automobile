@@ -69,17 +69,35 @@
     }
     .top-card__img-wrap {
         background: var(--color-card);
-        padding: 2.5rem 2rem 1.5rem;
+        padding: 3rem 2rem 2rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 220px;
+        min-height: 280px;
+    }
+    @media (min-width: 768px) {
+        .top-card__img-wrap {
+            min-height: 300px;
+            padding: 3.25rem 2rem 2.25rem;
+        }
+    }
+    @media (min-width: 1024px) {
+        .top-card__img-wrap {
+            min-height: 320px;
+        }
     }
     .top-card__img {
-        max-height: 180px;
+        max-height: 240px;
         width: auto;
+        max-width: 100%;
         object-fit: contain;
         transition: transform 0.4s ease;
+    }
+    @media (min-width: 768px) {
+        .top-card__img { max-height: 260px; }
+    }
+    @media (min-width: 1024px) {
+        .top-card__img { max-height: 280px; }
     }
     .top-card:hover .top-card__img { transform: scale(1.06); }
     .top-card__body {
