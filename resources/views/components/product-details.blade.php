@@ -611,7 +611,7 @@
 </style>
 
 <section class="product-wrapper py-12 md:py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="site-container">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-start">
             
             {{-- Left: Image & Details --}}

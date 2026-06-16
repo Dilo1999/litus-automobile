@@ -14,7 +14,7 @@
 
         {{-- Contact content – light section --}}
         <section class="relative py-10 md:py-16 overflow-hidden" style="background: #F4F4F4;">
-            <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="relative z-10 site-container">
                 <div class="mb-8 md:mb-10">
                     <h2 class="text-xl md:text-2xl font-bold tracking-tight text-stone-800">Get in touch</h2>
                     <p class="mt-1 text-sm text-stone-600">Send a message or use the details below</p>

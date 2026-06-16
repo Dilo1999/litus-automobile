@@ -1,279 +1,335 @@
-@php
-    $accent = '#c19b46';
-@endphp
-
-<x-layout title="About Us - Al Zaha General Trading">
-    <div class="min-h-screen" style="background-color: #F4F4F4;">
-        <x-hero
-            tagline="Al Zaha"
-            title="General Trading LLC"
-            subtitle="Learn more about our mission, vision, and the team behind Al Zaha General Trading."
+<x-layout title="About Us - LITUS Automobiles">
+    <div class="min-h-screen bg-white">
+        <x-page-hero
+            title="About LITUS Automobiles"
+            subtitle="A leading automotive company in the Maldives, specializing in the sale and service of high-quality motorcycles."
+            background-image="images/background/dubai-1-1536x1024.webp"
         />
 
-        {{-- Light section --}}
-        <section class="relative py-10 md:py-16 overflow-hidden" style="background: #F4F4F4;">
-            <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
-                {{-- Header block --}}
-                <div class="grid gap-10 lg:grid-cols-[1.2fr,1fr] lg:items-center mb-16">
-                    <div class="text-left">
-                        <div class="inline-flex items-center px-4 py-1.5 mb-4 rounded-full text-xs font-medium tracking-wide" style="border: 1px solid rgba(193,155,70,0.5); background: rgba(193,155,70,0.12); color: #9a7b2e;">
-                            <span class="w-2 h-2 rounded-full mr-2" style="background: {{ $accent }};"></span>
-                            Global Sourcing & Trading Partner
-                        </div>
-                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-stone-800 mb-4">
-                            About <span style="color: {{ $accent }};">Al Zaha General Trading LLC</span>
-                        </h1>
-                        <p class="max-w-xl text-base sm:text-lg text-stone-600 mb-4">
-                            Connecting businesses across Asia, Africa, and the Middle East with reliable global suppliers,
-                            competitive pricing, and seamless end-to-end sourcing solutions.
-                        </p>
-                        <p class="max-w-xl text-sm sm:text-base text-stone-500">
-                            Discover how our team, network, and values come together to create a seamless global sourcing experience for your business.
-                        </p>
-                    </div>
+        {{-- Introduction --}}
+        <section class="py-12 md:py-16">
+            <div class="site-container">
+                <h2 class="about-section-title about-section-title--intro">About LITUS Automobiles</h2>
+                <p class="about-intro-text about-intro-text--no-title">
+                    LITUS Automobiles is a leading automotive company in the Maldives, specializing in the sale and service
+                    of high-quality motorcycles. With a commitment to excellence and customer satisfaction, we strive to
+                    provide our clients with the best products and services in the industry.
+                </p>
 
-                    <div class="relative">
-                        <div class="absolute -inset-4 opacity-40 pointer-events-none rounded-3xl" style="background: linear-gradient(135deg, {{ $accent }}20, transparent 50%);"></div>
-                        <div class="relative overflow-hidden rounded-2xl bg-white border border-stone-200 shadow-sm">
-                            <img
-                                src="{{ asset('images/background/about-1-ezgif.com-png-to-webp-converter.webp') }}"
-                                alt="Al Zaha global sourcing and trading background"
-                                class="w-full h-full object-cover opacity-90"
-                            />
-                        </div>
-                    </div>
+                <div class="about-mv-grid">
+                    <article class="about-mv-card">
+                        <h2 class="about-mv-card__title">Our Mission</h2>
+                        <p class="about-mv-card__text">
+                            To provide high-quality motorcycles and exceptional service to our customers, while maintaining
+                            a commitment to excellence and customer satisfaction.
+                        </p>
+                    </article>
+                    <article class="about-mv-card">
+                        <h2 class="about-mv-card__title">Our Vision</h2>
+                        <p class="about-mv-card__text">
+                            To be the leading provider of motorcycles and automotive services in the Maldives.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        {{-- Key Members --}}
+        <section class="py-12 md:py-16" style="background: var(--color-bg);">
+            <div class="site-container">
+                <h2 class="about-section-title">Our Key Members</h2>
+
+                @php
+                    $keyMembersRow1 = [
+                        ['name' => 'Mohamed Zahir', 'role' => 'Managing Director'],
+                        ['name' => 'Ahmed Zahir', 'role' => 'Chief Operating Officer'],
+                        ['name' => 'Ali Thaufeeq', 'role' => 'Chief Financial Officer'],
+                    ];
+                    $keyMembersRow2 = [
+                        ['name' => 'Mohamed Naseer', 'role' => 'Project Manager'],
+                        ['name' => 'Aishath', 'role' => 'Sales Manager'],
+                        ['name' => 'Ahmed Ali', 'role' => 'Service Manager'],
+                        ['name' => 'Mohamed Shiyam', 'role' => 'Marketing Manager'],
+                    ];
+                @endphp
+
+                <div class="about-members-grid about-members-grid--3">
+                    @foreach($keyMembersRow1 as $member)
+                        <article class="member-card">
+                            <div class="member-card__photo-wrap">
+                                <img
+                                    src="https://ui-avatars.com/api/?name={{ urlencode($member['name']) }}&size=400&background=00105B&color=fff&bold=true"
+                                    alt="{{ $member['name'] }}"
+                                    class="member-card__photo"
+                                    loading="lazy"
+                                >
+                            </div>
+                            <h3 class="member-card__name">{{ $member['name'] }}</h3>
+                            <p class="member-card__role">{{ $member['role'] }}</p>
+                        </article>
+                    @endforeach
                 </div>
 
-                {{-- Bento Box: Who We Are, At a Glance, Mission, Vision --}}
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-20">
-                    <div class="lg:col-span-2 rounded-2xl p-8 lg:p-10 bg-white border border-stone-200 shadow-sm">
-                        <h2 class="text-2xl sm:text-3xl font-semibold text-stone-800 mb-6">Who We Are</h2>
-                        <p class="text-stone-600 leading-relaxed mb-4">
-                            At <span class="font-semibold text-stone-800">Al Zaha</span>, we specialize in global sourcing and trading, providing businesses in
-                            <span class="font-medium text-stone-700">Asia, Africa, and the Middle East</span> with access to products from diverse key international markets.
-                            While <span class="font-medium text-stone-700">Dubai</span> serves as a strategic hub for our operations, we go beyond, tapping into a global network of
-                            suppliers to meet your sourcing needs, whether from Asia, Europe, or other parts of the world.
-                        </p>
-                        <p class="text-stone-600 leading-relaxed">
-                            Our mission is to simplify the sourcing process by offering tailored solutions that connect your business with
-                            the right products, at the right price, from the most reliable suppliers across the globe. We understand the
-                            importance of timely delivery, cost-effectiveness, and quality, and we are committed to ensuring your satisfaction
-                            every step of the way.
-                        </p>
-                    </div>
-
-                    <div class="rounded-2xl p-6 lg:p-8 bg-white border border-stone-200 shadow-sm">
-                        <h3 class="text-lg font-semibold text-stone-800 mb-2">At a Glance</h3>
-                        <p class="text-sm text-stone-600 mb-4">
-                            Your trusted partner for cross-border sourcing, reliable logistics, and transparent trading solutions.
-                        </p>
-                        <dl class="space-y-3 text-sm text-stone-600">
-                            <div class="flex justify-between border-b border-stone-200 pb-2">
-                                <dt>Regions Served</dt>
-                                <dd class="font-semibold text-stone-800">Asia, Africa, Middle East</dd>
+                <div class="about-members-grid about-members-grid--4">
+                    @foreach($keyMembersRow2 as $member)
+                        <article class="member-card">
+                            <div class="member-card__photo-wrap">
+                                <img
+                                    src="https://ui-avatars.com/api/?name={{ urlencode($member['name']) }}&size=400&background=00105B&color=fff&bold=true"
+                                    alt="{{ $member['name'] }}"
+                                    class="member-card__photo"
+                                    loading="lazy"
+                                >
                             </div>
-                            <div class="flex justify-between border-b border-stone-200 pb-2">
-                                <dt>Sourcing Hubs</dt>
-                                <dd class="font-semibold text-stone-800">Dubai, Asia, Europe</dd>
-                            </div>
-                            <div class="flex justify-between">
-                                <dt>Core Values</dt>
-                                <dd class="font-semibold text-stone-800">Quality, Efficiency, Trust</dd>
-                            </div>
-                        </dl>
-                    </div>
-
-                    <div class="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="rounded-2xl px-8 py-10 text-center bg-white border border-stone-200 shadow-sm">
-                            <h2 class="text-xl sm:text-2xl font-semibold mb-4" style="color: {{ $accent }};">Mission of AL ZAHA</h2>
-                            <p class="text-stone-600 leading-relaxed italic">
-                                &ldquo;To provide innovative, reliable, and customer-centric sourcing and trading solutions that connect global markets
-                                with quality products from Dubai. Al Zaha is committed to offering tailor-made services that meet the unique needs
-                                of businesses across Asia, Africa, and the Middle East, with a focus on efficiency, transparency, and trust.&rdquo;
-                            </p>
-                        </div>
-
-                        <div class="rounded-2xl px-8 py-10 text-center bg-white border border-stone-200 shadow-sm">
-                            <h2 class="text-xl sm:text-2xl font-semibold mb-4" style="color: {{ $accent }};">Vision of AL ZAHA</h2>
-                            <p class="text-stone-600 leading-relaxed italic">
-                                &ldquo;To become the leading sourcing and trading partner across Asia, Africa, and the Middle East by 2030, recognized
-                                for excellence in supply chain management, sustainable growth, and a commitment to fostering long-lasting
-                                partnerships with our clients and suppliers.&rdquo;
-                            </p>
-                        </div>
-                    </div>
+                            <h3 class="member-card__name">{{ $member['name'] }}</h3>
+                            <p class="member-card__role">{{ $member['role'] }}</p>
+                        </article>
+                    @endforeach
                 </div>
+            </div>
+        </section>
 
-                {{-- Why Choose Us --}}
-                <div class="mb-20">
-                    <div class="text-center mb-10">
-                        <p class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-[0.3em] uppercase mb-2" style="color: {{ $accent }};">
-                            Why Choose Al Zaha
-                        </p>
-                        <h2 class="text-xl sm:text-2xl font-semibold text-stone-800 mb-3">
-                            A Partner You Can Rely On
-                        </h2>
-                        <p class="text-sm sm:text-base text-stone-600 max-w-2xl mx-auto">
-                            Seven core strengths that make us a trusted sourcing and trading partner for businesses across Asia, Africa, and the Middle East.
-                        </p>
-                    </div>
-
-                    <div class="grid gap-6 md:gap-7 md:grid-cols-2 lg:grid-cols-3">
-                        {{-- 1. Global Sourcing Expertise --}}
-                        <div class="about-feature-card group relative rounded-2xl p-6 pt-7 hover:-translate-y-1 transition-all bg-white border border-stone-200 shadow-sm">
-                            <div class="mb-3 flex items-center gap-2">
-                                <span class="inline-flex h-8 w-8 items-center justify-center rounded-full" style="background: rgba(193,155,70,0.2);">
-                                    <svg class="w-4 h-4" style="color: {{ $accent }}" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <path d="M12 2a9.99 9.99 0 0 0-7.07 2.93A10 10 0 1 0 19.07 4.93 9.96 9.96 0 0 0 12 2Z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M2 12h20" stroke-width="1.4" stroke-linecap="round"/>
-                                        <path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10Z" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </span>
-                                <h3 class="text-base font-semibold text-stone-800">Global Sourcing Expertise</h3>
-                            </div>
-                            <p class="text-sm text-stone-600 leading-relaxed">
-                                We source products from <span class="font-semibold text-stone-700">international markets</span>, including
-                                <span class="font-semibold text-stone-700">Dubai, Asia, Europe</span>, and beyond, offering you access to a vast range of options for your business needs.
-                            </p>
-                        </div>
-
-                        {{-- 2–6: feature cards --}}
-                        <div class="about-feature-card group rounded-2xl p-5 lg:p-6 hover:-translate-y-0.5 transition-all duration-300 bg-white border border-stone-200 shadow-sm">
-                            <div class="inline-flex h-8 w-8 items-center justify-center rounded-xl mb-3" style="background: rgba(193,155,70,0.2);">
-                                <svg class="w-4 h-4" style="color: {{ $accent }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                                    <path d="M5 4h14v4H5zM5 10h9v4H5zM5 16h6v4H5z" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-sm font-semibold text-stone-800 mb-2">Tailored Solutions</h3>
-                            <p class="text-xs text-stone-600 leading-relaxed">
-                                <span class="font-medium text-stone-700">Customized sourcing</span> across all product categories for your unique needs.
-                            </p>
-                        </div>
-
-                        <div class="about-feature-card group rounded-2xl p-5 lg:p-6 hover:-translate-y-0.5 transition-all duration-300 bg-white border border-stone-200 shadow-sm">
-                            <div class="inline-flex h-8 w-8 items-center justify-center rounded-xl mb-3" style="background: rgba(193,155,70,0.2);">
-                                <svg class="w-4 h-4" style="color: {{ $accent }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                                    <path d="M6.5 11.5 10 15l7.5-7.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <circle cx="12" cy="12" r="9" stroke-width="1.4"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-sm font-semibold text-stone-800 mb-2">Strong Supplier Relationships</h3>
-                            <p class="text-xs text-stone-600 leading-relaxed">
-                                Well-established connections with <span class="font-medium text-stone-700">global suppliers</span> for competitive prices.
-                            </p>
-                        </div>
-
-                        <div class="about-feature-card group rounded-2xl p-5 lg:p-6 hover:-translate-y-0.5 transition-all duration-300 bg-white border border-stone-200 shadow-sm">
-                            <div class="inline-flex h-8 w-8 items-center justify-center rounded-xl mb-3" style="background: rgba(193,155,70,0.2);">
-                                <svg class="w-4 h-4" style="color: {{ $accent }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                                    <path d="M4 17h16M5 7h14l-1 8H6z" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <circle cx="9" cy="18" r="1.3" stroke-width="1.2"/>
-                                    <circle cx="17" cy="18" r="1.3" stroke-width="1.2"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-sm font-semibold text-stone-800 mb-2">End-to-End Service</h3>
-                            <p class="text-xs text-stone-600 leading-relaxed">
-                                From sourcing to logistics and delivery—products arrive <span class="font-medium text-stone-700">on time</span> and <span class="font-medium text-stone-700">within budget</span>.
-                            </p>
-                        </div>
-
-                        <div class="about-feature-card group rounded-2xl p-5 lg:p-6 hover:-translate-y-0.5 transition-all duration-300 bg-white border border-stone-200 shadow-sm">
-                            <div class="inline-flex h-8 w-8 items-center justify-center rounded-xl mb-3" style="background: rgba(193,155,70,0.2);">
-                                <svg class="w-4 h-4" style="color: {{ $accent }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                                    <path d="M7 10c0-1.7 1.3-3 3-3h4a2 2 0 0 1 0 4h-4a2 2 0 0 0 0 4h3" stroke-linecap="round"/>
-                                    <path d="M12 5v2m0 10v2" stroke-linecap="round"/>
-                                    <circle cx="12" cy="12" r="9" stroke-width="1.4"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-sm font-semibold text-stone-800 mb-2">Competitive Pricing</h3>
-                            <p class="text-xs text-stone-600 leading-relaxed">
-                                Highly <span class="font-medium text-stone-700">competitive prices</span> across product categories to optimize your costs.
-                            </p>
-                        </div>
-
-                        <div class="about-feature-card group rounded-2xl p-5 lg:p-6 hover:-translate-y-0.5 transition-all duration-300 bg-white border border-stone-200 shadow-sm">
-                            <div class="inline-flex h-8 w-8 items-center justify-center rounded-xl mb-3" style="background: rgba(193,155,70,0.2);">
-                                <svg class="w-4 h-4" style="color: {{ $accent }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                                    <path d="M3 10h13l3 4h2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M3 7h11v9H3z" stroke-linejoin="round"/>
-                                    <circle cx="7" cy="18" r="1.3" stroke-width="1.2"/>
-                                    <circle cx="16" cy="18" r="1.3" stroke-width="1.2"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-sm font-semibold text-stone-800 mb-2">Efficient Logistics</h3>
-                            <p class="text-xs text-stone-600 leading-relaxed">
-                                Strategic hubs like <span class="font-medium text-stone-700">Dubai</span> for fast delivery across Asia, Africa, and the Middle East.
-                            </p>
-                        </div>
-
-                        {{-- 7. Trust and Transparency --}}
-                        <div class="about-feature-card md:col-span-2 lg:col-span-3 group relative rounded-2xl p-6 pt-7 hover:-translate-y-1 transition-all bg-white border border-stone-200 shadow-sm">
-                            <!-- <div class="absolute -top-4 left-6 inline-flex h-8 w-8 items-center justify-center rounded-full text-black text-xs font-semibold" style="background: {{ $accent }};">
-                                07
-                            </div> -->
-                            <div class="mb-3 flex items-center gap-2">
-                                <span class="inline-flex h-8 w-8 items-center justify-center rounded-full" style="background: rgba(193,155,70,0.2);">
-                                    <svg class="w-4 h-4" style="color: {{ $accent }}" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <path d="M5 20h14V7l-7-4-7 4z" stroke-width="1.4" stroke-linejoin="round"/>
-                                        <path d="M9 11.5 11.5 14 16 9.5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </span>
-                                <h3 class="text-base font-semibold text-stone-800">Trust and Transparency</h3>
-                            </div>
-                            <p class="text-sm text-stone-600 leading-relaxed">
-                                We believe in building long-lasting partnerships through clear communication, transparency, and dedicated
-                                customer service, ensuring that every sourcing experience with us is seamless and efficient.
-                            </p>
-                        </div>
-                    </div>
+        {{-- Operation Team --}}
+        <section class="py-12 md:py-16 bg-white">
+            <div class="site-container">
+                <h2 class="about-section-title">Our Operation Team</h2>
+                <div class="about-team-photo-wrap">
+                    <img
+                        src="{{ asset('images/background/dubai-1-1536x1024.webp') }}"
+                        alt="LITUS Automobiles operation team"
+                        class="about-team-photo"
+                        loading="lazy"
+                        onerror="this.src='{{ asset('images/background/6b38bb0353.jpeg') }}'"
+                    >
                 </div>
+                <p class="about-team-text">
+                    Our operation team is composed of dedicated and experienced professionals who work tirelessly to ensure
+                    the smooth operation of our business. From sales and marketing to service and maintenance, our team is
+                    committed to providing our customers with the best possible experience.
+                </p>
+            </div>
+        </section>
 
-                {{-- Team Section --}}
-                <div class="pt-12 border-t border-stone-200">
-                    <div class="grid gap-10 lg:grid-cols-[3fr,2fr] lg:items-center">
-                        <div>
-                            <h2 class="text-2xl sm:text-3xl font-semibold text-stone-800 mb-4">Our Team</h2>
-                            <p class="text-stone-600 leading-relaxed mb-4">
-                                At <span class="font-semibold text-stone-800">Al Zaha General Trading LLC</span>, our success is driven by a dedicated and
-                                experienced team of professionals who bring industry expertise, market insights, and a passion for delivering
-                                top-notch customer service.
-                            </p>
-                            <p class="text-stone-600 leading-relaxed mb-4">
-                                From sourcing specialists to supply chain managers, our team works tirelessly to ensure that every client
-                                receives personalized solutions tailored to their business needs. We believe that our people are our greatest
-                                asset, and their commitment to efficiency, transparency, and reliability is what sets us apart.
-                            </p>
-                            <p class="text-stone-600 leading-relaxed">
-                                Each team member plays a vital role in making sure that the sourcing process is smooth and that our clients
-                                always receive the best possible service, from initial inquiry to final delivery.
-                            </p>
-                        </div>
+        {{-- Showrooms & Service Centers --}}
+        <section class="py-12 md:py-16 pb-20" style="background: var(--color-bg);">
+            <div class="site-container">
+                <h2 class="about-section-title">Our Showrooms &amp; Service Centers</h2>
 
-                        <div class="rounded-2xl p-6 bg-white border border-stone-200 shadow-sm">
-                            <h3 class="text-lg font-semibold text-stone-800 mb-3">What You Can Expect</h3>
-                            <ul class="space-y-2 text-sm text-stone-600">
-                                <li class="flex items-start">
-                                    <span class="mt-1.5 mr-2 h-1.5 w-1.5 rounded-full flex-shrink-0" style="background: {{ $accent }};"></span>
-                                    Personalized support from a responsive and knowledgeable team.
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="mt-1.5 mr-2 h-1.5 w-1.5 rounded-full flex-shrink-0" style="background: {{ $accent }};"></span>
-                                    Clear communication at every stage of the sourcing and delivery process.
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="mt-1.5 mr-2 h-1.5 w-1.5 rounded-full flex-shrink-0" style="background: {{ $accent }};"></span>
-                                    Reliable execution built on experience, integrity, and a client-first mindset.
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                @php
+                    $showrooms = [
+                        ['name' => "Male' Showroom", 'address' => 'Visit our showroom for the latest models and expert service.', 'image' => 'images/background/6b38bb0353.jpeg', 'span' => 2],
+                        ['name' => "Hulhumale' Showroom", 'address' => 'Visit our showroom for the latest models and expert service.', 'image' => 'images/background/about-1-ezgif.com-png-to-webp-converter.webp', 'span' => 2],
+                        ['name' => 'Fuvahmulah Showroom', 'address' => 'Visit our showroom for the latest models and expert service.', 'image' => 'images/background/Build.png', 'span' => 1],
+                        ['name' => 'Addu Showroom', 'address' => 'Visit our showroom for the latest models and expert service.', 'image' => 'images/background/dubai-1-1536x1024.webp', 'span' => 1],
+                        ['name' => 'Kulhudhuffushi Showroom', 'address' => 'Visit our showroom for the latest models and expert service.', 'image' => 'images/background/6b38bb0353.jpeg', 'span' => 1],
+                        ['name' => 'Thinadhoo Showroom', 'address' => 'Visit our showroom for the latest models and expert service.', 'image' => 'images/background/Build.png', 'span' => 1],
+                        ['name' => 'Naifaru Showroom', 'address' => 'Visit our showroom for the latest models and expert service.', 'image' => 'images/background/about-1-ezgif.com-png-to-webp-converter.webp', 'span' => 1],
+                        ['name' => 'Head Office', 'address' => 'Visit our showroom for the latest models and expert service.', 'image' => 'images/background/dubai-1-1536x1024.webp', 'span' => 1],
+                        ['name' => 'Dhidhdhoo Showroom', 'address' => 'Visit our showroom for the latest models and expert service.', 'image' => 'images/background/6b38bb0353.jpeg', 'span' => 1],
+                        ['name' => 'Villingili Showroom', 'address' => 'Visit our showroom for the latest models and expert service.', 'image' => 'images/background/Build.png', 'span' => 1],
+                    ];
+                @endphp
+
+                <div class="showrooms-grid">
+                    @foreach($showrooms as $showroom)
+                        <article class="showroom-card showroom-card--span-{{ $showroom['span'] }}">
+                            <div class="showroom-card__img-wrap">
+                                <img
+                                    src="{{ asset($showroom['image']) }}"
+                                    alt="{{ $showroom['name'] }}"
+                                    class="showroom-card__img"
+                                    loading="lazy"
+                                >
+                            </div>
+                            <div class="showroom-card__body">
+                                <h3 class="showroom-card__title">{{ $showroom['name'] }}</h3>
+                                <p class="showroom-card__address">{{ $showroom['address'] }}</p>
+                                <a href="{{ route('contact') }}" class="litus-btn showroom-card__btn">Learn More</a>
+                            </div>
+                        </article>
+                    @endforeach
                 </div>
             </div>
         </section>
     </div>
 
     <style>
-        .about-feature-card { transition: border-color 0.2s ease; }
-        .about-feature-card:hover { border-color: #c19b46; }
+        .about-intro-text {
+            max-width: 52rem;
+            margin: 0 auto 2.5rem;
+            text-align: center;
+            font-size: 0.9375rem;
+            line-height: 1.75;
+            color: var(--color-muted);
+        }
+        .about-intro-text--no-title {
+            margin-top: 0;
+        }
+        .about-section-title--intro {
+            margin-bottom: 1.25rem;
+        }
+        .about-section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            color: var(--color-navy);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .about-mv-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+        @media (min-width: 768px) {
+            .about-mv-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .about-mv-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 2rem 1.75rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+        .about-mv-card__title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: 1rem;
+        }
+        .about-mv-card__text {
+            font-size: 0.875rem;
+            line-height: 1.7;
+            color: var(--color-muted);
+            margin: 0;
+        }
+        .about-members-grid {
+            display: grid;
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+        .about-members-grid--3 {
+            grid-template-columns: 1fr;
+        }
+        .about-members-grid--4 {
+            grid-template-columns: 1fr;
+            margin-bottom: 0;
+        }
+        @media (min-width: 640px) {
+            .about-members-grid--3 { grid-template-columns: repeat(2, 1fr); }
+            .about-members-grid--4 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .about-members-grid--3 { grid-template-columns: repeat(3, 1fr); }
+            .about-members-grid--4 { grid-template-columns: repeat(4, 1fr); }
+        }
+        .member-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            padding-bottom: 1.25rem;
+        }
+        .member-card__photo-wrap {
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            background: var(--color-card);
+        }
+        .member-card__photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .member-card__name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin: 1rem 1rem 0.25rem;
+        }
+        .member-card__role {
+            font-size: 0.8125rem;
+            color: var(--color-muted);
+            margin: 0 1rem;
+        }
+        .about-team-photo-wrap {
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .about-team-photo {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+        .about-team-text {
+            max-width: 52rem;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 0.9375rem;
+            line-height: 1.75;
+            color: var(--color-muted);
+        }
+        .showrooms-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+        @media (min-width: 640px) {
+            .showrooms-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .showrooms-grid { grid-template-columns: repeat(6, 1fr); }
+            .showroom-card--span-2 { grid-column: span 3; }
+            .showroom-card--span-1 { grid-column: span 2; }
+        }
+        .showroom-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+        }
+        .showroom-card__img-wrap {
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            background: var(--color-card);
+        }
+        .showroom-card__img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .showroom-card:hover .showroom-card__img { transform: scale(1.05); }
+        .showroom-card__body {
+            padding: 1.25rem 1.25rem 1.5rem;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .showroom-card__title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: 0.5rem;
+        }
+        .showroom-card__address {
+            font-size: 0.8125rem;
+            line-height: 1.5;
+            color: var(--color-muted);
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+        .showroom-card__btn {
+            font-size: 0.6875rem;
+            padding: 0.5rem 1.25rem;
+        }
     </style>
 </x-layout>

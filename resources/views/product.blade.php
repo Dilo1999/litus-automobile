@@ -17,7 +17,7 @@
         <section class="relative text-stone-800 overflow-hidden min-h-[320px] md:min-h-[380px] lg:min-h-[440px]" style="margin-top: -4rem; padding-top: 4rem;">
             <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/background/dubai-1-1536x1024.webp') }}');"></div>
             <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(255,255,255,0.35) 0%, rgba(244,244,244,0.45) 100%);"></div>
-            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16 lg:py-20 flex flex-col items-center justify-center text-center min-h-[320px] md:min-h-[380px] lg:min-h-[440px]">
+            <div class="relative z-10 site-container py-12 md:py-16 lg:py-20 flex flex-col items-center justify-center text-center min-h-[320px] md:min-h-[380px] lg:min-h-[440px]">
                 <div class="max-w-3xl product-hero-alt">
                     {{-- Eyebrow --}}
                     <div class="hero-eyebrow">
@@ -75,7 +75,7 @@
         </section>
 
         @if ($errors->any())
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 mt-4">
+            <div class="site-container mt-4">
                 <div class="rounded-xl bg-rose-50 border border-rose-200 px-4 py-3 text-sm text-rose-800">
                     <p class="font-medium">Please fix the following errors:</p>
                     <ul class="mt-1 list-disc list-inside">

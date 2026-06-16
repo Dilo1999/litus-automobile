@@ -88,7 +88,9 @@
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -98,9 +100,73 @@
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     
     <style>
+        :root {
+            --color-navy: #00105B;
+            --color-navy-light: #001a7a;
+            --color-red: #C41E3A;
+            --color-red-dark: #a01830;
+            --color-bg: #F4F4F4;
+            --color-card: #EBEBEB;
+            --color-dark: #1a1a1a;
+            --color-muted: #57534e;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Figtree', system-ui, sans-serif;
+            --site-gutter: 1.5rem;
+        }
+        @media (min-width: 640px) {
+            :root { --site-gutter: 1.75rem; }
+        }
+        @media (min-width: 1024px) {
+            :root { --site-gutter: 2.5rem; }
+        }
+        .site-container {
+            width: 100%;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--site-gutter);
+            padding-right: var(--site-gutter);
+        }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Figtree', sans-serif;
+            font-family: var(--font-sans);
+        }
+        .litus-section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            color: var(--color-navy);
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+        .litus-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.625rem 1.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--color-navy);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .litus-btn:hover {
+            background: var(--color-navy-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 16, 91, 0.25);
+        }
+        .litus-btn--red {
+            background: var(--color-red);
+        }
+        .litus-btn--red:hover {
+            background: var(--color-red-dark);
+            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
         }
         /* Shared hero section – same fixed height for About Us & Contact Us */
         .hero-section {
@@ -143,8 +209,8 @@
         </div>
         <style>
             .form-success-popup {
-                --color-gold: #c19b46;
-                --color-gold-dim: #a8843a;
+                --color-gold: var(--color-navy);
+                --color-gold-dim: var(--color-navy-light);
                 --color-dark: #1a1a1a;
                 position: fixed;
                 inset: 0;
@@ -241,7 +307,9 @@
         {{ $slot }}
     </main>
 
-    <x-logo-marquee />
+    @unless(request()->routeIs('home'))
+        <x-logo-marquee />
+    @endunless
 
     <x-footer />
 

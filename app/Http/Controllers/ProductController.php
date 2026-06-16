@@ -62,6 +62,12 @@ class ProductController extends Controller
         // Featured product for hero (first product from catalog)
         $featuredProduct = Product::query()->latest()->first();
 
+        $catalogProducts = Product::query()->latest()->get();
+        $promotionProducts = $catalogProducts->take(4);
+        $topSellingProducts = $catalogProducts->count() > 4
+            ? $catalogProducts->slice(4, 4)->values()
+            : $catalogProducts->take(4);
+
         // Facets with product counts (from all products, not just current filter)
         $baseQuery = Product::query();
         if ($search) {
@@ -112,6 +118,8 @@ class ProductController extends Controller
         return view('home', compact(
             'products',
             'featuredProduct',
+            'promotionProducts',
+            'topSellingProducts',
             'brandList',
             'categories',
             'categoryTree',

@@ -1,13 +1,10 @@
 <footer class="footer-wrapper">
-    {{-- Top Divider --}}
-    <div class="footer-divider">
+    <div class="footer-divider site-container">
         <div class="footer-divider-line"></div>
     </div>
 
-    {{-- Main Content --}}
-    <div class="footer-content">
+    <div class="footer-content site-container">
         <div class="footer-grid">
-            {{-- Logo & About --}}
             <div class="footer-col footer-col-brand">
                 <a href="{{ url('/') }}" class="footer-logo-link" aria-label="Al Zaha General Trading - Home">
                     <img src="{{ asset('images/background/Logo-L-web.png') }}" alt="Al Zaha General Trading" class="footer-logo-img">
@@ -17,7 +14,6 @@
                 </p>
             </div>
 
-            {{-- Contact Details --}}
             <div class="footer-col footer-col-contact">
                 <h3 class="footer-section-title">Contact</h3>
                 <ul class="footer-contact-list">
@@ -43,10 +39,9 @@
                 </ul>
             </div>
 
-            {{-- Let's Talk CTA --}}
             <div class="footer-col footer-col-cta">
                 <h3 class="footer-cta-title">Let's Talk</h3>
-                <p class="footer-cta-desc">Have a project in mind? We’d love to hear from you.</p>
+                <p class="footer-cta-desc">Have a project in mind? We'd love to hear from you.</p>
                 <a href="{{ route('contact') }}#contact-form" class="cta-button">
                     Get in Touch
                 </a>
@@ -54,11 +49,10 @@
         </div>
     </div>
 
-    {{-- Bottom Section --}}
     <div class="footer-bottom">
-        <div class="footer-bottom-inner">
+        <div class="footer-bottom-inner site-container">
             <p class="copyright">
-                Copyright &copy; {{ date('Y') }} AL ZAHA General Trading LLC. | Developed by LITUS IT</a>
+                Copyright &copy; {{ date('Y') }} AL ZAHA General Trading LLC. | Developed by LITUS IT
             </p>
             <div class="social-links">
                 <a href="#" class="social-link" aria-label="Facebook">
@@ -82,47 +76,36 @@
 </footer>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
-
     .footer-wrapper {
-        --color-dark: #1a1a1a;
-        --color-gold: #c19b46;
-        --color-gold-dim: #a8843a;
-        --color-cream: #1a1a1a;
-        --color-gray: #57534e;
-        --font-serif: 'Playfair Display', serif;
-        --font-sans: 'Inter', sans-serif;
-    }
-
-    .footer-wrapper {
-        background: #FFFFFF;
-        color: var(--color-cream);
+        --color-navy: #00105B;
+        --color-navy-dark: #000a3d;
+        --color-red: #C41E3A;
+        --color-red-dark: #a01830;
+        --color-text: rgba(255, 255, 255, 0.85);
+        --color-text-muted: rgba(255, 255, 255, 0.65);
+        --font-serif: var(--font-serif, 'Playfair Display', Georgia, serif);
+        --font-sans: var(--font-sans, 'Figtree', system-ui, sans-serif);
+        background: var(--color-navy);
+        color: #fff;
         font-family: var(--font-sans);
         position: relative;
         overflow: hidden;
-        border-top: 1px solid #e7e5e4;
         margin-top: 4rem;
     }
 
-    /* Top Gold Divider */
     .footer-divider {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
         padding-top: 1.5rem;
     }
 
     .footer-divider-line {
-        height: 1px;
-        background: linear-gradient(to right, transparent 0%, var(--color-gold) 20%, var(--color-gold) 80%, transparent 100%);
+        height: 2px;
+        background: linear-gradient(to right, transparent 0%, var(--color-red) 20%, var(--color-red) 80%, transparent 100%);
         opacity: 0.9;
     }
 
-    /* Main Content */
     .footer-content {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 3rem 1.5rem 2.5rem;
+        padding-top: 3rem;
+        padding-bottom: 2.5rem;
     }
 
     .footer-grid {
@@ -145,7 +128,6 @@
         .footer-grid {
             grid-template-columns: 1.1fr 1fr minmax(200px, 0.9fr);
             gap: 3rem 2.5rem;
-            align-items: start;
         }
         .footer-col-cta {
             grid-column: span 1;
@@ -153,11 +135,8 @@
         }
     }
 
-    .footer-col {
-        min-width: 0;
-    }
+    .footer-col { min-width: 0; }
 
-    /* Logo & Brand */
     .footer-col-brand {
         display: flex;
         flex-direction: column;
@@ -175,18 +154,18 @@
         max-width: 100%;
         object-fit: contain;
         display: block;
+        filter: brightness(0) invert(1);
     }
 
     .footer-about {
         font-size: 0.9375rem;
         line-height: 1.65;
-        color: var(--color-gray);
+        color: var(--color-text-muted);
         font-weight: 400;
         max-width: 36ch;
         margin: 0;
     }
 
-    /* Contact Section */
     .footer-col-contact {
         display: flex;
         flex-direction: column;
@@ -198,7 +177,7 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.12em;
-        color: var(--color-gold);
+        color: var(--color-red);
         margin: 0;
     }
 
@@ -221,28 +200,27 @@
     .contact-label {
         font-weight: 500;
         font-size: 0.8125rem;
-        color: var(--color-cream);
+        color: #fff;
     }
 
     .contact-value {
         font-size: 0.9375rem;
         line-height: 1.5;
-        color: var(--color-gray);
+        color: var(--color-text-muted);
         font-weight: 400;
         margin: 0;
     }
 
     .contact-link {
-        color: var(--color-gray);
+        color: var(--color-text-muted);
         text-decoration: none;
         transition: color 0.2s ease;
     }
 
     .contact-link:hover {
-        color: var(--color-gold);
+        color: var(--color-red);
     }
 
-    /* CTA Section */
     .footer-col-cta {
         display: flex;
         flex-direction: column;
@@ -260,7 +238,7 @@
         font-family: var(--font-serif);
         font-size: 1.75rem;
         font-weight: 500;
-        color: var(--color-cream);
+        color: #fff;
         margin: 0;
         letter-spacing: -0.02em;
         line-height: 1.2;
@@ -268,7 +246,7 @@
 
     .footer-cta-desc {
         font-size: 0.9375rem;
-        color: var(--color-gray);
+        color: var(--color-text-muted);
         font-weight: 400;
         margin: 0;
         line-height: 1.5;
@@ -283,15 +261,15 @@
     }
 
     .cta-button {
-        background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dim) 100%);
-        color: var(--color-dark);
+        background: var(--color-red);
+        color: #fff;
         font-weight: 600;
         font-size: 0.8125rem;
         letter-spacing: 0.06em;
         text-transform: uppercase;
         padding: 0.875rem 1.75rem;
         border: none;
-        border-radius: 8px;
+        border-radius: 4px;
         cursor: pointer;
         transition: all 0.25s ease;
         display: inline-block;
@@ -300,20 +278,19 @@
     }
 
     .cta-button:hover {
+        background: var(--color-red-dark);
         transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(193, 155, 70, 0.35);
+        box-shadow: 0 8px 20px rgba(196, 30, 58, 0.35);
     }
 
-    /* Bottom Section */
     .footer-bottom {
-        border-top: 1px solid #e7e5e4;
-        background: #F4F4F4;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        background: var(--color-navy-dark);
     }
 
     .footer-bottom-inner {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 1.25rem 1.5rem;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -324,7 +301,7 @@
 
     .copyright {
         font-size: 0.8125rem;
-        color: var(--color-gray);
+        color: var(--color-text-muted);
         font-weight: 400;
         margin: 0;
         text-align: left;
@@ -342,16 +319,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #FFFFFF;
-        border: 1px solid #e7e5e4;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
         border-radius: 8px;
-        color: var(--color-gold);
+        color: #fff;
         transition: all 0.25s ease;
+        text-decoration: none;
     }
 
     .social-link:hover {
-        background: rgba(193, 155, 70, 0.12);
-        border-color: var(--color-gold);
+        background: var(--color-red);
+        border-color: var(--color-red);
         transform: translateY(-2px);
     }
 
@@ -360,87 +338,40 @@
         height: 18px;
     }
 
-    /* Mobile */
     @media (max-width: 639px) {
-        .footer-wrapper {
-            margin-top: 2rem;
-        }
-        .footer-divider {
-            padding: 0.75rem 1rem 0;
-        }
-        .footer-divider-line {
-            margin: 0;
-        }
-        .footer-content {
-            padding: 1.25rem 1rem 1.5rem;
-        }
+        .footer-wrapper { margin-top: 2rem; }
+        .footer-divider { padding-top: 0.75rem; }
+        .footer-content { padding-top: 1.25rem; padding-bottom: 1.5rem; }
         .footer-grid {
             grid-template-columns: 1fr;
             gap: 1.5rem;
             max-width: 400px;
             margin: 0 auto;
         }
-        .footer-col-brand {
-            gap: 0.5rem;
-            text-align: center;
-        }
-        .footer-logo-link {
-            display: inline-flex;
-            justify-content: center;
-        }
-        .footer-logo-img {
-            height: 2rem;
-        }
+        .footer-col-brand { gap: 0.5rem; text-align: center; }
+        .footer-logo-link { display: inline-flex; justify-content: center; }
+        .footer-logo-img { height: 2rem; }
         .footer-about {
             font-size: 0.8125rem;
             line-height: 1.5;
             max-width: none;
             text-align: center;
         }
-        .footer-col-contact {
-            gap: 0.75rem;
-            text-align: center;
-        }
-        .footer-section-title {
-            font-size: 0.6875rem;
-        }
-        .footer-contact-list {
-            gap: 0.625rem;
-        }
-        .contact-item {
-            text-align: center;
-        }
-        .contact-value {
-            font-size: 0.8125rem;
-        }
-        .contact-item:first-child .contact-value br {
-            display: none;
-        }
+        .footer-col-contact { gap: 0.75rem; text-align: center; }
+        .footer-contact-list { gap: 0.625rem; }
+        .contact-item { text-align: center; }
+        .contact-value { font-size: 0.8125rem; }
+        .contact-item:first-child .contact-value br { display: none; }
         .footer-col-cta {
             align-items: center;
             gap: 0.75rem;
             padding-top: 0.25rem;
-            border-top: 1px solid #e7e5e4;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
         }
-        .footer-cta-title {
-            font-size: 1.375rem;
-            text-align: center;
-        }
-        .footer-cta-desc {
-            font-size: 0.8125rem;
-            text-align: center;
-            max-width: none;
-        }
-        .cta-button {
-            width: 100%;
-            max-width: 280px;
-            padding: 0.75rem 1.25rem;
-            font-size: 0.75rem;
-        }
-        .footer-bottom-inner {
-            padding: 0.875rem 1rem;
-            gap: 0.75rem;
-        }
+        .footer-cta-title { font-size: 1.375rem; text-align: center; }
+        .footer-cta-desc { font-size: 0.8125rem; text-align: center; max-width: none; }
+        .cta-button { width: 100%; max-width: 280px; padding: 0.75rem 1.25rem; font-size: 0.75rem; }
+        .footer-bottom-inner { padding-top: 0.875rem; padding-bottom: 0.875rem; gap: 0.75rem; }
         .copyright {
             font-size: 0.6875rem;
             line-height: 1.4;
@@ -448,18 +379,8 @@
             width: 100%;
             text-align: center;
         }
-        .social-links {
-            order: 1;
-            width: 100%;
-            justify-content: center;
-        }
-        .social-link {
-            width: 36px;
-            height: 36px;
-        }
-        .social-link svg {
-            width: 16px;
-            height: 16px;
-        }
+        .social-links { order: 1; width: 100%; justify-content: center; }
+        .social-link { width: 36px; height: 36px; }
+        .social-link svg { width: 16px; height: 16px; }
     }
 </style>

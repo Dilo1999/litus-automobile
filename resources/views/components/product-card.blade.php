@@ -55,7 +55,7 @@
         top: -50%;
         width: 100%;
         height: 100%;
-        background: #c19b46;
+        background: #00105B;
         transform: skewY(345deg);
         transition: 0.5s;
         z-index: 0;
@@ -127,7 +127,7 @@
         padding: 10px 28px;
         margin-top: 12px;
         color: #fff;
-        background: #c19b46;
+        background: #00105B;
         border-radius: 30px;
         font-size: 12px;
         font-weight: 600;
@@ -140,7 +140,7 @@
         opacity: 1;
     }
     .product-card-cta:hover {
-        background: #a8843a;
+        background: #001a7a;
     }
 </style>
 @endonce

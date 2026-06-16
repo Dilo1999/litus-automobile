@@ -6,8 +6,8 @@
 @if(count($brands) > 0)
 
 
-<section class="brand-strip-wrapper brand-strip-section py-6 lg:py-8 overflow-hidden">
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+<section class="brand-strip-wrapper brand-strip-section py-6 lg:py-8 overflow-hidden" style="--color-accent: {{ $accent }}; --color-accent-light: {{ $accent }}cc;">
+    <div class="relative site-container">
         {{-- Left arrow – desktop only --}}
         <button
             type="button"
@@ -92,8 +92,8 @@
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
     
     .brand-strip-wrapper {
-        --color-gold: #c19b46;
-        --color-gold-light: #a8843a;
+        --color-gold: var(--color-accent, #00105B);
+        --color-gold-light: var(--color-accent-light, #001a7a);
         --color-bg: #faf9f7;
         --color-card: #ffffff;
         --color-border: #e8e6e3;
@@ -155,8 +155,8 @@
     }
     
     .brand-card:hover {
-        border-color: rgba(193, 155, 70, 0.4);
-        box-shadow: 0 4px 16px rgba(193, 155, 70, 0.15);
+        border-color: rgba(0, 16, 91, 0.3);
+        box-shadow: 0 4px 16px rgba(0, 16, 91, 0.12);
         transform: translateY(-2px);
     }
     

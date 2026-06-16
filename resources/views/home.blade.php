@@ -1,6 +1,8 @@
 <x-home
     :products="$products"
     :featuredProduct="$featuredProduct ?? null"
+    :promotionProducts="$promotionProducts ?? collect()"
+    :topSellingProducts="$topSellingProducts ?? collect()"
     :brandList="$brandList ?? []"
     :categories="$categories ?? []"
     :category-tree="$categoryTree ?? []"
