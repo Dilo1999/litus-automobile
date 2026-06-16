@@ -1,5 +1,5 @@
 @php
-    $hasHeroOverlay = request()->routeIs('home', 'about', 'motorcycles', 'ownership-plans', 'parts', 'service-center', 'contact', 'gallery', 'products.show');
+    $hasHeroOverlay = request()->routeIs('home', 'about', 'motorcycles', 'ownership-plans', 'ownership-hub', 'ownership-hub.show', 'parts', 'service-center', 'contact', 'gallery', 'products.show');
     $navLogo = asset('images/icon/Litus-Automobiles-white.png');
 
     $navItems = [
@@ -7,6 +7,7 @@
         ['label' => 'About-Us', 'url' => route('about'), 'active' => request()->routeIs('about')],
         ['label' => 'Motorcycles', 'url' => route('motorcycles'), 'active' => request()->routeIs('motorcycles')],
         ['label' => 'Ownership Plans', 'url' => route('ownership-plans'), 'active' => request()->routeIs('ownership-plans')],
+        ['label' => 'Ownership Hub', 'url' => route('ownership-hub'), 'active' => request()->routeIs('ownership-hub', 'ownership-hub.show')],
         ['label' => 'Parts', 'url' => route('parts'), 'active' => request()->routeIs('parts')],
         ['label' => 'Service Center', 'url' => route('service-center'), 'active' => request()->routeIs('service-center')],
         ['label' => 'Contact-Us', 'url' => route('contact'), 'active' => request()->routeIs('contact')],

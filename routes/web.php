@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MotorcycleController;
+use App\Http\Controllers\OwnershipHubController;
 use App\Http\Controllers\OwnershipPlanController;
 use App\Http\Controllers\PartsController;
 use App\Http\Controllers\ProductController;
@@ -66,6 +67,9 @@ Route::get('/', [ProductController::class, 'index'])->name('home');
 Route::get('/motorcycles', [MotorcycleController::class, 'index'])->name('motorcycles');
 
 Route::get('/ownership-plans', [OwnershipPlanController::class, 'index'])->name('ownership-plans');
+
+Route::get('/ownership-hub', [OwnershipHubController::class, 'index'])->name('ownership-hub');
+Route::get('/ownership-hub/{category}/{slug}', [OwnershipHubController::class, 'show'])->name('ownership-hub.show');
 
 Route::get('/parts', [PartsController::class, 'index'])->name('parts');
 Route::post('/parts', [PartsController::class, 'store'])->name('parts.store');
