@@ -168,22 +168,33 @@
             background: var(--color-red-dark);
             box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
         }
-        /* Shared hero section – same fixed height for About Us & Contact Us */
+        /* Standard inner page hero height – matches Ownership Plans */
+        .page-hero-standard {
+            --page-hero-pt: 100px;
+            --page-hero-pb: 64px;
+            padding-top: var(--page-hero-pt);
+            padding-bottom: var(--page-hero-pb);
+            min-height: calc(var(--page-hero-pt) + var(--page-hero-pb) + 14rem);
+            box-sizing: border-box;
+        }
+        @media (min-width: 640px) {
+            .page-hero-standard {
+                --page-hero-pt: 120px;
+                --page-hero-pb: 80px;
+                min-height: calc(var(--page-hero-pt) + var(--page-hero-pb) + 15rem);
+            }
+        }
+        @media (min-width: 768px) {
+            .page-hero-standard {
+                --page-hero-pt: 165px;
+                --page-hero-pb: 165px;
+                min-height: calc(var(--page-hero-pt) + var(--page-hero-pb) + 24rem);
+            }
+        }
         .hero-section {
-            height: 520px;
-            min-height: 520px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-        }
-        @media (min-width: 640px) {
-            .hero-section { height: 600px; min-height: 600px; }
-        }
-        @media (min-width: 768px) {
-            .hero-section { height: 680px; min-height: 680px; }
-        }
-        @media (min-width: 1024px) {
-            .hero-section { height: 760px; min-height: 760px; }
         }
     </style>
 </head>

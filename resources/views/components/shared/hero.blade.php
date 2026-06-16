@@ -6,13 +6,7 @@
 ])
 
 <section
-    class="hero-section relative text-stone-800 overflow-hidden"
-    style="
-        margin-top: -4rem;
-        padding-top: calc(1rem + 4rem);
-        padding-bottom: 6rem;
-        min-height: 36rem;
-    "
+    class="hero-section page-hero-standard relative text-stone-800 overflow-hidden"
 >
     {{-- Background image --}}
     <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('{{ asset($backgroundImage) }}');"></div>

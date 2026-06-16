@@ -35,10 +35,10 @@
     <div class="min-h-screen bg-[#f6f7fb] text-gray-900 leading-normal">
         {{-- Hero --}}
         <section
-            class="ownership-hero relative bg-cover bg-center text-white pt-[100px] pb-16 sm:pt-[120px] sm:pb-20 md:pt-[165px] md:pb-[165px]"
+            class="ownership-hero page-hero-standard relative bg-cover bg-center text-white"
             style="background-image: linear-gradient(90deg, rgba(5,10,25,0.92), rgba(5,10,25,0.55)), url('{{ $heroBg }}');"
         >
-            <div class="site-container max-w-[1200px]">
+            <div class="site-container">
                 <div class="max-w-[720px] md:max-w-[720px]">
                     <p class="text-[#d7a63f] font-bold uppercase tracking-wide text-xs md:text-[13px] mb-3.5 md:mb-[30px]">Ownership Plans</p>
                     <h1 class="text-[28px] sm:text-[clamp(1.875rem,9vw,2.625rem)] md:text-[clamp(2.25rem,6vw,4.25rem)] leading-[1.08] md:leading-[1.1] font-black uppercase mb-3.5 md:mb-5">
@@ -57,7 +57,7 @@
         </section>
 
         {{-- Benefits --}}
-        <div class="site-container max-w-[1200px] py-6 md:py-9 md:pb-11">
+        <div class="site-container py-6 md:py-9 md:pb-11">
             <div class="overflow-hidden w-full" id="benefitsViewport">
                 <div
                     class="benefits-track grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-4 transition-transform duration-[450ms] ease-out will-change-transform"
@@ -77,8 +77,8 @@
         </div>
 
         {{-- Plans --}}
-        <section class="py-14 md:py-[70px]">
-            <div class="site-container max-w-[1200px]">
+        <section class="py-12 md:py-16 lg:py-20">
+            <div class="site-container">
                 <div class="text-center max-w-[720px] mx-auto mb-8 md:mb-10">
                     <h2 class="text-[clamp(1.875rem,4vw,2.875rem)] font-black text-slate-900 mb-2.5">Our Ownership Plans</h2>
                     <p class="text-gray-500 text-[17px]">Choose the Ijara Plan that suits you best.</p>
@@ -123,8 +123,8 @@
         </section>
 
         {{-- Help --}}
-        <section class="pb-14 md:pb-[70px] pt-0">
-            <div class="site-container max-w-[1200px]">
+        <section class="py-12 md:py-16 lg:py-20 pt-0">
+            <div class="site-container">
                 <div class="text-center bg-white rounded-[18px] py-10 px-5 shadow-[0_10px_28px_rgba(15,23,42,0.08)]">
                     <h2 class="text-[34px] font-black mb-2.5">Need Help Choosing?</h2>
                     <p class="text-gray-500 mb-6">Our team is here to help you find the ownership plan that best fits your needs.</p>

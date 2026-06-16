@@ -13,11 +13,11 @@
     @endphp
 
     <div class="min-h-screen" style="background-color: #F4F4F4;">
-        {{-- Hero (extends under nav so transparent nav shows cityscape) --}}
-        <section class="relative text-stone-800 overflow-hidden min-h-[320px] md:min-h-[380px] lg:min-h-[440px]" style="margin-top: -4rem; padding-top: 4rem;">
+        {{-- Hero --}}
+        <section class="relative text-stone-800 overflow-hidden page-hero-standard flex flex-col justify-center">
             <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/background/dubai-1-1536x1024.webp') }}');"></div>
             <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(255,255,255,0.35) 0%, rgba(244,244,244,0.45) 100%);"></div>
-            <div class="relative z-10 site-container py-12 md:py-16 lg:py-20 flex flex-col items-center justify-center text-center min-h-[320px] md:min-h-[380px] lg:min-h-[440px]">
+            <div class="relative z-10 site-container flex flex-col items-center justify-center text-center">
                 <div class="max-w-3xl product-hero-alt">
                     {{-- Eyebrow --}}
                     <div class="hero-eyebrow">

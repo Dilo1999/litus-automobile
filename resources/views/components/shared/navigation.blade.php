@@ -1,12 +1,12 @@
 @php
-    $hasHeroOverlay = request()->routeIs('home', 'about', 'motorcycles', 'ownership-plans');
+    $hasHeroOverlay = request()->routeIs('home', 'about', 'motorcycles', 'ownership-plans', 'parts');
 
     $navItems = [
         ['label' => 'Home', 'url' => route('home'), 'active' => request()->routeIs('home')],
         ['label' => 'About-Us', 'url' => route('about'), 'active' => request()->routeIs('about')],
         ['label' => 'Motorcycles', 'url' => route('motorcycles'), 'active' => request()->routeIs('motorcycles')],
         ['label' => 'Ownership Plans', 'url' => route('ownership-plans'), 'active' => request()->routeIs('ownership-plans')],
-        ['label' => 'Parts', 'url' => route('home') . '#products', 'active' => false],
+        ['label' => 'Parts', 'url' => route('parts'), 'active' => request()->routeIs('parts')],
         ['label' => 'Service Center', 'url' => route('contact'), 'active' => request()->routeIs('contact') && request()->get('section') === 'service'],
         ['label' => 'Contact-Us', 'url' => route('contact'), 'active' => request()->routeIs('contact')],
         ['label' => 'Gallery', 'url' => route('home') . '#gallery', 'active' => false],
