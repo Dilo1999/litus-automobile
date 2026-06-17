@@ -2661,14 +2661,17 @@
 /* --- resources-views-components-shared-hero --- */
 .hero-icon { object-position: 45% 45%; }
 
-/* --- resources-views-components-shared-logo-marquee --- */
-@keyframes logo-scroll-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+/* --- resources-views-components-ownership-hub-index --- */
+.hub-filter-btn,
+.latest-update-filter-btn {
+    background-color: var(--hub-filter-soft, var(--latest-updates-soft, #f8efd9));
+    color: var(--hub-filter-accent, var(--latest-updates-accent, #d7a63f));
 }
 
-.animate-logo-scroll {
-    animation: logo-scroll-left 60s linear infinite;
+.hub-filter-btn.is-active,
+.latest-update-filter-btn.is-active {
+    background-color: var(--hub-filter-accent, var(--latest-updates-accent, #d7a63f));
+    color: #111827;
 }
 
 /* --- resources-views-components-shared-navigation --- */

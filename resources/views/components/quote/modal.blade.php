@@ -56,16 +56,6 @@
         };
 
         const openModal = () => {
-            const iconBar = document.getElementById('logo-marquee');
-            const scrollBottom = window.scrollY + window.innerHeight;
-            const docHeight = document.documentElement.scrollHeight;
-            const threshold = 250;
-
-            if (iconBar && scrollBottom > docHeight - threshold) {
-                const scrollToMiddle = Math.max(0, docHeight / 2 - window.innerHeight / 2);
-                window.scrollTo({ top: scrollToMiddle, behavior: 'smooth' });
-            }
-
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             lockScroll();

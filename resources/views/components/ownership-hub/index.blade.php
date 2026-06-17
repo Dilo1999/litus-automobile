@@ -1,119 +1,67 @@
 @props([
     'testimonials' => [],
+    'latestUpdatePosts' => [],
+    'ownershipGuidePosts' => [],
+    'ridingMaintenancePosts' => [],
 ])
 
 @php
     $heroBg = 'https://images.unsplash.com/photo-1558981359-219d6364c9c8?auto=format&fit=crop&w=1600&q=80';
-    $featuredBg = 'https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&w=1400&q=80';
     $whatsapp = 'https://wa.me/9607797442';
 
     $sections = [
         [
+            'id' => 'latest-updates',
             'label' => 'Latest Updates',
             'title' => 'Latest Updates',
             'description' => 'Share new arrivals, active promotions, and important company announcements from LITUS in one clear update section.',
             'accent' => '#d7a63f',
             'soft' => '#f8efd9',
             'alt' => false,
-            'cards' => [
-                [
-                    'title' => 'New Arrivals',
-                    'description' => 'Feature newly available motorcycles, fresh stock, new colors, model updates, and product highlights.',
-                    'image' => 'https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=900&q=80',
-                    'items' => ['New motorcycle models and variants', 'Recently added stock', 'Product availability updates'],
-                    'btn' => 'View New Arrivals',
-                    'url' => route('ownership-hub.show', ['category' => 'latest-updates', 'slug' => 'new-arrivals']),
-                ],
-                [
-                    'title' => 'Promotions',
-                    'description' => 'Publish current campaigns, special ownership offers, seasonal promotions, and limited-time customer benefits.',
-                    'image' => 'https://images.unsplash.com/photo-1558981852-426c6c22a060?auto=format&fit=crop&w=900&q=80',
-                    'items' => ['Special offers and campaigns', 'Limited-time promotions', 'Important offer conditions'],
-                    'btn' => 'View Promotions',
-                    'url' => route('ownership-hub.show', ['category' => 'latest-updates', 'slug' => 'promotions']),
-                ],
-                [
-                    'title' => 'Company Announcements',
-                    'description' => 'Use this area for official LITUS notices, service changes, branch updates, partnerships, and customer announcements.',
-                    'image' => 'https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=900&q=80',
-                    'items' => ['Official LITUS notices', 'Service and process updates', 'Branch or operation announcements'],
-                    'btn' => 'Read Announcements',
-                    'url' => route('ownership-hub.show', ['category' => 'latest-updates', 'slug' => 'company-announcements']),
-                ],
+            'filters' => [
+                ['title' => 'New Arrivals', 'filter_key' => 'new-arrivals'],
+                ['title' => 'Promotions', 'filter_key' => 'promotions'],
+                ['title' => 'Company Announcements', 'filter_key' => 'company-announcements'],
             ],
+            'all_label' => 'All Updates',
         ],
         [
+            'id' => 'ownership-guides',
             'label' => 'Ownership Guides',
             'title' => 'Ownership Guides',
             'description' => 'Explain LITUS ownership plans, Ijara concepts, documents, approvals, and early settlement in simple customer-friendly language.',
             'accent' => '#2563eb',
             'soft' => '#dbeafe',
             'alt' => true,
-            'cards' => [
-                [
-                    'title' => 'Plan Explanations',
-                    'description' => 'Help customers understand each ownership plan and choose the option that suits their documents, guarantor situation, and budget.',
-                    'image' => 'https://images.unsplash.com/photo-1622185135505-2d795003994a?auto=format&fit=crop&w=900&q=80',
-                    'items' => ['Prime, Family, Secure, Flexi, Freedom, and Premium', 'Eligibility and document guidance', 'Best-fit plan explanations'],
-                    'btn' => 'Read Plan Explanations',
-                    'url' => route('ownership-hub.show', ['category' => 'ownership-guides', 'slug' => 'plan-explanations']),
-                ],
-                [
-                    'title' => 'Ijara Tips',
-                    'description' => 'Provide simple tips about the Islamic-compliant Ijara structure, application preparation, payment expectations, and approval process.',
-                    'image' => 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=80',
-                    'items' => ['Ijara explained simply', 'Application preparation tips', 'Approval process guidance'],
-                    'btn' => 'Read Ijara Tips',
-                    'url' => route('ownership-hub.show', ['category' => 'ownership-guides', 'slug' => 'ijara-tips']),
-                ],
-                [
-                    'title' => 'Early Settlement Guides',
-                    'description' => 'Explain how early settlement works, when it applies, and how customers can request support from the LITUS team.',
-                    'image' => 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80',
-                    'items' => ['Early settlement basics', 'Plan-specific settlement guidance', 'How to request settlement support'],
-                    'btn' => 'Explore Early Settlement',
-                    'url' => route('ownership-hub.show', ['category' => 'ownership-guides', 'slug' => 'early-settlement-guides']),
-                ],
+            'filters' => [
+                ['title' => 'Plan Explanations', 'filter_key' => 'plan-explanations'],
+                ['title' => 'Ijara Tips', 'filter_key' => 'ijara-tips'],
+                ['title' => 'Early Settlement Guides', 'filter_key' => 'early-settlement-guides'],
             ],
+            'all_label' => 'All Guides',
         ],
         [
+            'id' => 'riding-maintenance',
             'label' => 'Riding & Maintenance',
             'title' => 'Riding & Maintenance',
             'description' => 'Support customers after purchase with practical service tips, safer riding advice, and product care guidance.',
             'accent' => '#059669',
             'soft' => '#d1fae5',
             'alt' => false,
-            'cards' => [
-                [
-                    'title' => 'Service Tips',
-                    'description' => 'Share maintenance reminders that help customers keep their motorcycles reliable, safe, and ready for daily use.',
-                    'image' => 'https://images.unsplash.com/photo-1591637333184-19aa84b3e01f?auto=format&fit=crop&w=900&q=80',
-                    'items' => ['Regular service checklist', 'Oil, brakes, tyres, lights, and battery reminders', 'Early issue detection tips'],
-                    'btn' => 'Read Service Tips',
-                    'url' => route('ownership-hub.show', ['category' => 'riding-maintenance', 'slug' => 'service-tips']),
-                ],
-                [
-                    'title' => 'Riding Advice',
-                    'description' => 'Publish helpful riding guidance for new and experienced riders, including safe habits and daily commute advice.',
-                    'image' => 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=900&q=80',
-                    'items' => ['Safe everyday riding habits', 'Rainy weather riding advice', 'First-time owner guidance'],
-                    'btn' => 'Explore Riding Advice',
-                    'url' => route('ownership-hub.show', ['category' => 'riding-maintenance', 'slug' => 'riding-advice']),
-                ],
-                [
-                    'title' => 'Product Care',
-                    'description' => 'Help customers protect their motorcycle and accessories with simple cleaning, storage, and long-term care recommendations.',
-                    'image' => 'https://images.unsplash.com/photo-1619771914272-e3c1ba17ba4d?auto=format&fit=crop&w=900&q=80',
-                    'items' => ['Cleaning and storage advice', 'Battery and tyre care', 'Long-term product condition tips'],
-                    'btn' => 'Learn Product Care',
-                    'url' => route('ownership-hub.show', ['category' => 'riding-maintenance', 'slug' => 'product-care']),
-                ],
+            'filters' => [
+                ['title' => 'Service Tips', 'filter_key' => 'service-tips'],
+                ['title' => 'Riding Advice', 'filter_key' => 'riding-advice'],
+                ['title' => 'Product Care', 'filter_key' => 'product-care'],
             ],
+            'all_label' => 'All Tips',
         ],
     ];
 
-    $customerStoriesAccent = '#7c3aed';
-    $customerStoriesSoft = '#ede9fe';
+    $sectionPosts = [
+        'latest-updates' => $latestUpdatePosts,
+        'ownership-guides' => $ownershipGuidePosts,
+        'riding-maintenance' => $ridingMaintenancePosts,
+    ];
 
     $customerStoryCards = [
         [
@@ -133,6 +81,24 @@
             'url' => route('ownership-hub.show', ['category' => 'customer-stories', 'slug' => 'ownership-journeys']),
         ],
     ];
+
+    $customerStoriesAccent = '#7c3aed';
+    $customerStoriesSoft = '#ede9fe';
+
+    $sectionNav = array_merge(
+        array_map(fn ($section) => [
+            'label' => $section['label'],
+            'id' => $section['id'],
+            'accent' => $section['accent'],
+            'soft' => $section['soft'],
+        ], $sections),
+        [[
+            'label' => 'Customer Stories',
+            'id' => 'customer-stories',
+            'accent' => $customerStoriesAccent,
+            'soft' => $customerStoriesSoft,
+        ]]
+    );
 @endphp
 
 <x-layouts.app title="Ownership Hub - LITUS Automobiles">
@@ -155,46 +121,27 @@
       </div>
     </section>
 
-    {{-- Intro --}}
-    <div class="site-container max-w-[1200px]">
-      <div class="relative z-[2] -mt-9 rounded-[18px] bg-white p-6 shadow-[0_14px_35px_rgba(15,23,42,0.12)] md:p-[30px]">
-        <h2 class="mb-2.5 text-[30px] font-black text-slate-900">Your complete ownership resource</h2>
-        <p class="max-w-[850px] text-base text-gray-500">
-          Ownership Hub replaces the traditional news page with a more useful customer resource.
-          Each section below works as a blog category. When a customer clicks a button, they are
-          taken to the related inner guide page.
-        </p>
-      </div>
-    </div>
-
-    {{-- Featured --}}
-    <section class="py-[55px] pb-0 md:py-[75px]">
-      <div class="site-container max-w-[1200px]">
-        <div
-          class="flex min-h-[300px] items-end rounded-[22px] bg-cover bg-center p-7 text-white md:min-h-[320px] md:p-[42px]"
-          style="background-image: linear-gradient(90deg, rgba(5,10,25,0.88), rgba(5,10,25,0.38)), url('{{ $featuredBg }}');"
-        >
-          <div class="max-w-[650px]">
-            <span class="mb-3 inline-flex rounded-full bg-[#d7a63f] px-3 py-1.5 text-xs font-black uppercase text-gray-900">Featured Guide</span>
-            <h2 class="mb-2.5 text-[clamp(30px,4vw,46px)] font-black leading-tight">How to Choose the Right LITUS Ownership Plan</h2>
-            <p class="mb-[18px] text-base text-gray-200">
-              Help customers understand ownership plan options, required documents,
-              guarantor requirements, and payment expectations before they apply.
-            </p>
+    {{-- Section quick nav --}}
+    <nav class="border-b border-[#eef0f4] bg-white shadow-[0_8px_24px_rgba(15,23,42,0.06)]" aria-label="Ownership Hub sections">
+      <div class="site-container max-w-[1200px] py-4 md:py-5">
+        <div class="flex flex-wrap justify-center gap-2.5 md:gap-3">
+          @foreach($sectionNav as $item)
             <a
-              href="{{ route('ownership-hub.show', ['category' => 'ownership-guides', 'slug' => 'choose-the-right-ownership-plan']) }}"
-              class="inline-flex rounded-lg bg-[#d7a63f] px-[18px] py-3 text-sm font-black text-gray-900 no-underline transition hover:bg-[#c69532]"
+              href="#{{ $item['id'] }}"
+              data-hub-section-link
+              class="inline-flex items-center justify-center rounded-full px-4 py-2.5 text-xs font-extrabold uppercase tracking-wide no-underline transition hover:-translate-y-px md:px-5 md:text-[13px]"
+              style="background-color: {{ $item['soft'] }}; color: {{ $item['accent'] }};"
             >
-              Read Featured Guide
+              {{ $item['label'] }}
             </a>
-          </div>
+          @endforeach
         </div>
       </div>
-    </section>
+    </nav>
 
     {{-- Category sections --}}
     @foreach($sections as $section)
-      <section class="py-[55px] md:py-[75px] {{ $section['alt'] ? 'bg-white' : '' }}">
+      <section id="{{ $section['id'] }}" class="scroll-mt-20 py-[55px] lg:scroll-mt-24 md:py-[75px] {{ $section['alt'] ? 'bg-white' : '' }}">
         <div class="site-container max-w-[1200px]">
           <div class="mb-[34px] max-w-[820px]">
             <span
@@ -207,27 +154,22 @@
             <p class="text-[17px] text-gray-500">{{ $section['description'] }}</p>
           </div>
 
-          <div class="grid grid-cols-1 gap-[22px] sm:grid-cols-2 lg:grid-cols-3">
-            @foreach($section['cards'] as $card)
-              <x-ownership-hub.partials.card
-                :label="$section['label']"
-                :title="$card['title']"
-                :description="$card['description']"
-                :image="$card['image']"
-                :items="$card['items']"
-                :btn-text="$card['btn']"
-                :url="$card['url']"
-                :accent-color="$section['accent']"
-                :card-bg="$section['alt'] ? 'bg-gray-50' : 'bg-white'"
-              />
-            @endforeach
-          </div>
+          @if(! empty($sectionPosts[$section['id']]))
+            <x-ownership-hub.partials.filtered-posts
+              :filters="$section['filters']"
+              :posts="$sectionPosts[$section['id']]"
+              :accent-color="$section['accent']"
+              :soft-color="$section['soft']"
+              :all-label="$section['all_label']"
+              :aria-label="'Filter ' . strtolower($section['label'])"
+            />
+          @endif
         </div>
       </section>
     @endforeach
 
     {{-- Customer Stories / Testimonials --}}
-    <section class="bg-white py-[55px] md:py-[75px]">
+    <section id="customer-stories" class="scroll-mt-20 bg-white py-[55px] lg:scroll-mt-24 md:py-[75px]">
       <div class="site-container max-w-[1200px]">
         <div class="mb-[34px] max-w-[820px]">
           <span
@@ -307,4 +249,55 @@
       </div>
     </section>
   </div>
+
+  <script>
+    document.querySelectorAll('[data-hub-section-link]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const targetId = link.getAttribute('href')?.slice(1);
+        if (!targetId) return;
+
+        const target = document.getElementById(targetId);
+        if (!target) return;
+
+        event.preventDefault();
+
+        const nav = document.getElementById('main-nav');
+        const offset = (nav?.offsetHeight || 72) + 16;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+
+    document.querySelectorAll('[data-hub-filter-root]').forEach((root) => {
+      const posts = Array.from(root.querySelectorAll('[data-hub-post]'));
+      const emptyState = root.querySelector('[data-hub-empty]');
+      const postsGrid = root.querySelector('[data-hub-posts]');
+
+      const applyFilter = (filter) => {
+        let visibleCount = 0;
+
+        root.querySelectorAll('[data-hub-filter]').forEach((button) => {
+          button.classList.toggle('is-active', button.dataset.hubFilter === filter);
+        });
+
+        posts.forEach((post) => {
+          const show = filter === 'all' || post.dataset.hubPost === filter;
+          post.classList.toggle('hidden', !show);
+          if (show) visibleCount += 1;
+        });
+
+        if (postsGrid) postsGrid.classList.toggle('hidden', visibleCount === 0);
+        if (emptyState) emptyState.classList.toggle('hidden', visibleCount > 0);
+      };
+
+      root.querySelectorAll('[data-hub-filter]').forEach((button) => {
+        button.addEventListener('click', () => {
+          applyFilter(button.dataset.hubFilter || 'all');
+        });
+      });
+
+      applyFilter('all');
+    });
+  </script>
 </x-layouts.app>

@@ -8,6 +8,9 @@ class OwnershipHubController extends Controller
     {
         return view('pages.ownership-hub', [
             'testimonials' => $this->testimonials(),
+            'latestUpdatePosts' => $this->latestUpdatePosts(),
+            'ownershipGuidePosts' => $this->ownershipGuidePosts(),
+            'ridingMaintenancePosts' => $this->ridingMaintenancePosts(),
         ]);
     }
 
@@ -113,6 +116,276 @@ class OwnershipHubController extends Controller
                 'plan' => '7 years ago',
                 'image' => null,
                 'rating' => 4,
+            ],
+        ];
+    }
+
+    /**
+     * @return array<int, array{title: string, excerpt: string, image: string, date: string, filter: string, filter_label: string, url: string}>
+     */
+    public function latestUpdatePosts(): array
+    {
+        return [
+            [
+                'title' => 'PCX 160 ABS Now Available in Malé',
+                'excerpt' => 'Fresh stock of Honda PCX 160 ABS has arrived with updated color options and immediate availability for Malé customers.',
+                'image' => 'https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=900&q=80',
+                'date' => 'Jun 12, 2025',
+                'filter' => 'new-arrivals',
+                'filter_label' => 'New Arrivals',
+                'url' => route('ownership-hub.show', ['category' => 'latest-updates', 'slug' => 'new-arrivals']),
+            ],
+            [
+                'title' => 'Yamaha NMAX 155 Added to Showroom Stock',
+                'excerpt' => 'A new batch of Yamaha NMAX 155 scooters is now available with ownership plan support and ready-to-ride units.',
+                'image' => 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=900&q=80',
+                'date' => 'Jun 8, 2025',
+                'filter' => 'new-arrivals',
+                'filter_label' => 'New Arrivals',
+                'url' => route('ownership-hub.show', ['category' => 'latest-updates', 'slug' => 'new-arrivals']),
+            ],
+            [
+                'title' => 'Kawasaki Ninja 400 Restock Update',
+                'excerpt' => 'Limited Ninja 400 units are back in stock. Contact the LITUS team to reserve your preferred color before they sell out.',
+                'image' => 'https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&w=900&q=80',
+                'date' => 'May 29, 2025',
+                'filter' => 'new-arrivals',
+                'filter_label' => 'New Arrivals',
+                'url' => route('ownership-hub.show', ['category' => 'latest-updates', 'slug' => 'new-arrivals']),
+            ],
+            [
+                'title' => 'Limited-Time Ownership Plan Offer',
+                'excerpt' => 'Selected LITUS ownership plans now include reduced down payment options for a limited campaign period.',
+                'image' => 'https://images.unsplash.com/photo-1558981852-426c6c22a060?auto=format&fit=crop&w=900&q=80',
+                'date' => 'Jun 10, 2025',
+                'filter' => 'promotions',
+                'filter_label' => 'Promotions',
+                'url' => route('ownership-hub.show', ['category' => 'latest-updates', 'slug' => 'promotions']),
+            ],
+            [
+                'title' => 'Seasonal Service Package Discount',
+                'excerpt' => 'Book a full service package this month and receive special pricing on labour and selected genuine parts.',
+                'image' => 'https://images.unsplash.com/photo-1591637333184-19aa84b3e01f?auto=format&fit=crop&w=900&q=80',
+                'date' => 'Jun 3, 2025',
+                'filter' => 'promotions',
+                'filter_label' => 'Promotions',
+                'url' => route('ownership-hub.show', ['category' => 'latest-updates', 'slug' => 'promotions']),
+            ],
+            [
+                'title' => 'Accessory Bundle Promotion for New Buyers',
+                'excerpt' => 'Customers purchasing selected motorcycles can now add helmet and riding gear bundles at promotional rates.',
+                'image' => 'https://images.unsplash.com/photo-1619771914272-e3c1ba17ba4d?auto=format&fit=crop&w=900&q=80',
+                'date' => 'May 24, 2025',
+                'filter' => 'promotions',
+                'filter_label' => 'Promotions',
+                'url' => route('ownership-hub.show', ['category' => 'latest-updates', 'slug' => 'promotions']),
+            ],
+            [
+                'title' => 'Updated Service Center Holiday Hours',
+                'excerpt' => 'LITUS service centers will operate on revised hours during the upcoming public holiday period.',
+                'image' => 'https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=900&q=80',
+                'date' => 'Jun 6, 2025',
+                'filter' => 'company-announcements',
+                'filter_label' => 'Company Announcements',
+                'url' => route('ownership-hub.show', ['category' => 'latest-updates', 'slug' => 'company-announcements']),
+            ],
+            [
+                'title' => 'New Customer Support Hotline for Atolls',
+                'excerpt' => 'LITUS has launched a dedicated support line to help atoll customers with delivery updates and ownership queries.',
+                'image' => 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80',
+                'date' => 'May 31, 2025',
+                'filter' => 'company-announcements',
+                'filter_label' => 'Company Announcements',
+                'url' => route('ownership-hub.show', ['category' => 'latest-updates', 'slug' => 'company-announcements']),
+            ],
+            [
+                'title' => 'Partnership Announcement with Leading Insurers',
+                'excerpt' => 'LITUS customers can now access streamlined insurance support through a new partner network.',
+                'image' => 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80',
+                'date' => 'May 18, 2025',
+                'filter' => 'company-announcements',
+                'filter_label' => 'Company Announcements',
+                'url' => route('ownership-hub.show', ['category' => 'latest-updates', 'slug' => 'company-announcements']),
+            ],
+        ];
+    }
+
+    /**
+     * @return array<int, array{title: string, excerpt: string, image: string, date: string, filter: string, filter_label: string, url: string}>
+     */
+    public function ownershipGuidePosts(): array
+    {
+        return [
+            [
+                'title' => 'Understanding Prime, Family, and Secure Plans',
+                'excerpt' => 'A simple breakdown of LITUS ownership plans, eligibility requirements, and which option suits different customer profiles.',
+                'image' => 'https://images.unsplash.com/photo-1622185135505-2d795003994a?auto=format&fit=crop&w=900&q=80',
+                'date' => 'Jun 11, 2025',
+                'filter' => 'plan-explanations',
+                'filter_label' => 'Plan Explanations',
+                'url' => route('ownership-hub.show', ['category' => 'ownership-guides', 'slug' => 'plan-explanations']),
+            ],
+            [
+                'title' => 'Flexi vs Freedom: Which Plan Fits You?',
+                'excerpt' => 'Compare payment flexibility, guarantor needs, and document requirements between Flexi and Freedom ownership plans.',
+                'image' => 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80',
+                'date' => 'Jun 4, 2025',
+                'filter' => 'plan-explanations',
+                'filter_label' => 'Plan Explanations',
+                'url' => route('ownership-hub.show', ['category' => 'ownership-guides', 'slug' => 'plan-explanations']),
+            ],
+            [
+                'title' => 'Documents Checklist Before You Apply',
+                'excerpt' => 'Prepare your ID, income proof, and guarantor documents ahead of time to speed up ownership plan approval.',
+                'image' => 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=80',
+                'date' => 'May 27, 2025',
+                'filter' => 'plan-explanations',
+                'filter_label' => 'Plan Explanations',
+                'url' => route('ownership-hub.show', ['category' => 'ownership-guides', 'slug' => 'plan-explanations']),
+            ],
+            [
+                'title' => 'Ijara Explained in Simple Terms',
+                'excerpt' => 'Learn how the Islamic-compliant Ijara structure works and what customers should expect during the application process.',
+                'image' => 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80',
+                'date' => 'Jun 9, 2025',
+                'filter' => 'ijara-tips',
+                'filter_label' => 'Ijara Tips',
+                'url' => route('ownership-hub.show', ['category' => 'ownership-guides', 'slug' => 'ijara-tips']),
+            ],
+            [
+                'title' => '5 Tips to Prepare Your Ijara Application',
+                'excerpt' => 'Practical steps to organize documents, confirm guarantor details, and avoid common delays during approval.',
+                'image' => 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80',
+                'date' => 'Jun 1, 2025',
+                'filter' => 'ijara-tips',
+                'filter_label' => 'Ijara Tips',
+                'url' => route('ownership-hub.show', ['category' => 'ownership-guides', 'slug' => 'ijara-tips']),
+            ],
+            [
+                'title' => 'What Happens After Ijara Approval?',
+                'excerpt' => 'A step-by-step guide to payment schedules, motorcycle release, and ongoing ownership support after approval.',
+                'image' => 'https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&w=900&q=80',
+                'date' => 'May 22, 2025',
+                'filter' => 'ijara-tips',
+                'filter_label' => 'Ijara Tips',
+                'url' => route('ownership-hub.show', ['category' => 'ownership-guides', 'slug' => 'ijara-tips']),
+            ],
+            [
+                'title' => 'Early Settlement Basics for LITUS Owners',
+                'excerpt' => 'Understand when early settlement applies, how balances are calculated, and what to confirm before paying off early.',
+                'image' => 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80',
+                'date' => 'Jun 7, 2025',
+                'filter' => 'early-settlement-guides',
+                'filter_label' => 'Early Settlement Guides',
+                'url' => route('ownership-hub.show', ['category' => 'ownership-guides', 'slug' => 'early-settlement-guides']),
+            ],
+            [
+                'title' => 'Plan-Specific Early Settlement Rules',
+                'excerpt' => 'How settlement terms differ across Prime, Family, Secure, and other LITUS ownership plans.',
+                'image' => 'https://images.unsplash.com/photo-1622185135505-2d795003994a?auto=format&fit=crop&w=900&q=80',
+                'date' => 'May 30, 2025',
+                'filter' => 'early-settlement-guides',
+                'filter_label' => 'Early Settlement Guides',
+                'url' => route('ownership-hub.show', ['category' => 'ownership-guides', 'slug' => 'early-settlement-guides']),
+            ],
+            [
+                'title' => 'How to Request Settlement Support',
+                'excerpt' => 'Contact the LITUS team, request a settlement quote, and complete early payoff with clear guidance.',
+                'image' => 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=80',
+                'date' => 'May 19, 2025',
+                'filter' => 'early-settlement-guides',
+                'filter_label' => 'Early Settlement Guides',
+                'url' => route('ownership-hub.show', ['category' => 'ownership-guides', 'slug' => 'early-settlement-guides']),
+            ],
+        ];
+    }
+
+    /**
+     * @return array<int, array{title: string, excerpt: string, image: string, date: string, filter: string, filter_label: string, url: string}>
+     */
+    public function ridingMaintenancePosts(): array
+    {
+        return [
+            [
+                'title' => 'Monthly Motorcycle Service Checklist',
+                'excerpt' => 'A practical checklist covering oil levels, brakes, tyres, lights, and chain care for everyday riders.',
+                'image' => 'https://images.unsplash.com/photo-1591637333184-19aa84b3e01f?auto=format&fit=crop&w=900&q=80',
+                'date' => 'Jun 10, 2025',
+                'filter' => 'service-tips',
+                'filter_label' => 'Service Tips',
+                'url' => route('ownership-hub.show', ['category' => 'riding-maintenance', 'slug' => 'service-tips']),
+            ],
+            [
+                'title' => 'When to Replace Brake Pads and Tyres',
+                'excerpt' => 'Know the warning signs of worn brakes and tyres before they affect safety on Malé roads.',
+                'image' => 'https://images.unsplash.com/photo-1619771914272-e3c1ba17ba4d?auto=format&fit=crop&w=900&q=80',
+                'date' => 'Jun 2, 2025',
+                'filter' => 'service-tips',
+                'filter_label' => 'Service Tips',
+                'url' => route('ownership-hub.show', ['category' => 'riding-maintenance', 'slug' => 'service-tips']),
+            ],
+            [
+                'title' => 'Battery Care in Humid Weather',
+                'excerpt' => 'Keep your motorcycle battery healthy with simple storage and maintenance habits for island conditions.',
+                'image' => 'https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=900&q=80',
+                'date' => 'May 26, 2025',
+                'filter' => 'service-tips',
+                'filter_label' => 'Service Tips',
+                'url' => route('ownership-hub.show', ['category' => 'riding-maintenance', 'slug' => 'service-tips']),
+            ],
+            [
+                'title' => 'Safe Riding Habits for Daily Commutes',
+                'excerpt' => 'Essential tips for navigating traffic, maintaining visibility, and riding defensively every day.',
+                'image' => 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=900&q=80',
+                'date' => 'Jun 8, 2025',
+                'filter' => 'riding-advice',
+                'filter_label' => 'Riding Advice',
+                'url' => route('ownership-hub.show', ['category' => 'riding-maintenance', 'slug' => 'riding-advice']),
+            ],
+            [
+                'title' => 'Riding in Rain: What Every Owner Should Know',
+                'excerpt' => 'Adjust speed, braking distance, and gear choices when riding during wet weather in the Maldives.',
+                'image' => 'https://images.unsplash.com/photo-1558981852-426c6c22a060?auto=format&fit=crop&w=900&q=80',
+                'date' => 'May 28, 2025',
+                'filter' => 'riding-advice',
+                'filter_label' => 'Riding Advice',
+                'url' => route('ownership-hub.show', ['category' => 'riding-maintenance', 'slug' => 'riding-advice']),
+            ],
+            [
+                'title' => 'First-Time Owner Riding Guide',
+                'excerpt' => 'New to motorcycling? Start with these basics for confidence, control, and safer first rides.',
+                'image' => 'https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=900&q=80',
+                'date' => 'May 20, 2025',
+                'filter' => 'riding-advice',
+                'filter_label' => 'Riding Advice',
+                'url' => route('ownership-hub.show', ['category' => 'riding-maintenance', 'slug' => 'riding-advice']),
+            ],
+            [
+                'title' => 'How to Clean and Protect Your Motorcycle',
+                'excerpt' => 'Simple washing, drying, and protection steps to keep paint, plastics, and chrome looking new.',
+                'image' => 'https://images.unsplash.com/photo-1619771914272-e3c1ba17ba4d?auto=format&fit=crop&w=900&q=80',
+                'date' => 'Jun 5, 2025',
+                'filter' => 'product-care',
+                'filter_label' => 'Product Care',
+                'url' => route('ownership-hub.show', ['category' => 'riding-maintenance', 'slug' => 'product-care']),
+            ],
+            [
+                'title' => 'Long-Term Storage Tips for Island Owners',
+                'excerpt' => 'Store your motorcycle safely during travel or off-season periods without damaging tyres or battery life.',
+                'image' => 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=900&q=80',
+                'date' => 'May 25, 2025',
+                'filter' => 'product-care',
+                'filter_label' => 'Product Care',
+                'url' => route('ownership-hub.show', ['category' => 'riding-maintenance', 'slug' => 'product-care']),
+            ],
+            [
+                'title' => 'Helmet and Gear Care Essentials',
+                'excerpt' => 'Extend the life of your riding gear with proper cleaning, drying, and storage after daily use.',
+                'image' => 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80',
+                'date' => 'May 17, 2025',
+                'filter' => 'product-care',
+                'filter_label' => 'Product Care',
+                'url' => route('ownership-hub.show', ['category' => 'riding-maintenance', 'slug' => 'product-care']),
             ],
         ];
     }

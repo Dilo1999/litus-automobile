@@ -136,10 +136,6 @@
         {{ $slot }}
     </main>
 
-    @unless(request()->routeIs('home', 'products.show'))
-        <x-shared.logo-marquee />
-    @endunless
-
     @unless(request()->routeIs('products.show'))
         <x-shared.footer />
     @endunless
